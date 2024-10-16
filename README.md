@@ -10,5 +10,5 @@ Thành viên tham gia:
 Công nghệ: HTML, CSS, JS, C# <br>
 Framework: ASP.NET 4 MVC, Bootstrap
 
-Các nguồn dữ liệu được lấy hầu hết từ trang web saigontourist.net
+Các nguồn dữ liệu được lấy hầu hết từ trang web [SaigonTourist](https://saigontourist.net) <br>
 Đây là bài tập của sinh viên, không được sử dụng cho mục đích thương mại.
