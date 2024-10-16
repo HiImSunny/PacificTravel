@@ -7,7 +7,7 @@ Thành viên tham gia:
 - Dương Trần Phúc
 - Phan Minh Khôi
 
-Công nghệ: HTML, CSS, JS, C#
+Công nghệ: HTML, CSS, JS, C# <br>
 Framework: ASP.NET 4 MVC, Bootstrap
 
 Các nguồn dữ liệu được lấy hầu hết từ trang web saigontourist.net
