@@ -1,0 +1,48 @@
+﻿@model Web_Tour.Models.LOAI_TOUR
+
+@{
+    ViewBag.Title = "DeleteTourType";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+
+
+    ViewBag.group = "Tours";
+    ViewBag.active = "TourTypes";
+}
+
+@section Head {
+    <link href="~/Content/admin/deletetour.css" rel="stylesheet" />
+}
+
+@section NavBar {
+    <div class="navbar">
+        <h4>Xóa Loại Tour</h4>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="delete-tour-type-container" style="background-color: white; border-radius: 3px; padding: 1.5rem; justify-content: center">
+
+        <h3 style="text-align: center">Bạn có chắc chắn muốn xóa?</h3>
+        <div style="text-align: -webkit-center;">
+            <hr />
+
+            <p>
+                Mã Loại:
+                <span>@Html.DisplayFor(model => model.ID_LOAI)</span>
+            </p>
+
+            <p>
+                Tên Loại:
+                <span>@Html.DisplayFor(model => model.TEN_LOAI)</span>
+            </p>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <button type="submit" class="confirm-delete-button">Xác nhận xóa</button>
+            }
+        </div>
+
+    </div>
+</div>

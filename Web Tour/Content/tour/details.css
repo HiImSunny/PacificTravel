@@ -1,0 +1,38 @@
+﻿.right-detail-tour-box {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 15px;
+    float: left;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+ul {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    margin-top: 5px;
+}
+
+.action-book a {
+    text-align: center;
+    border: 2px solid #ff6a00;
+    border-radius: 5px;
+    color: white;
+    background-color: #ff6a00;
+    transition: all ease .5s;
+    padding: 7px 40px;
+}
+
+    .action-book a:hover {
+        color: #ff6a00;
+        background-color: white;
+    }
+
+.common-info p {
+    font-family: 'Open Sans', sans-serif
+}
+
+.hero-wrap {
+    height: 700px;
+}

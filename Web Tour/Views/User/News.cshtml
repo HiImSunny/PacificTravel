@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Tin tức PacificTravel";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+
+    ViewBag.active = "News";
+    ViewBag.topBannerUrl = "/Images/news-banner.jpg";
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/user/news.css">
+}
+
+@section OverlayGradientOnBanner {
+    <div class="overlay dark-side-image"></div>
+}
+
+@section TopBannerContent {
+    <div class="container" style="display: flex; justify-content: center;">
+        <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
+            <div class="top-banner-content">
+                <h1>Tin tức <span style="color: #ff6c00">PacificTravel</span></h1>
+            </div>
+        </div>
+    </div>
+}
+
+<section class="ftco-section">
+    <div class="container">
+
+        <div class="news-container">
+
+            <div class="news-item">
+
+                <div class="news-img">
+                    <a href="#news-detail">
+                        <img src="~/Images/news/news-01.jpg">
+                    </a>
+                </div>
+
+                <div class="news-info">
+
+                    <div class="news-content">
+                        <a href="#news-detail"><h3 class="news-title">Tưng bừng ưu đãi & quà tặng Hội chợ du lịch quốc tế ITE-HCMC 2024</h3></a>
+                        <div class="date">
+                            <i class="fa-regular fa-calendar"></i>
+                            23/08/2024
+                        </div>
+                        <p>Với chủ đề “Du lịch bền vững - Kiến tạo tương lai”, Hội chợ du lịch quốc tế TP. Hồ Chí Minh (ITE-HCMC 2024) lần thứ 18 sẽ diễn ra từ ngày 5 - 7/9 tại Trung tâm Hội chợ & Triển lãm Sài Gòn (SECC), Phú Mỹ Hưng, Quận 7. Đến với hội chợ, Công ty Dịch vụ Lữ hành PacificTravel giới thiệu các chương trình tour mới, sản phẩm du lịch xanh theo tiêu chí Travelife, chung tay cùng Việt Nam hướng đến cam kết đưa lượng khí khải nhà kính về (0) Net Zero vào năm 2050.</p>
+                    </div>
+
+                    <a class="news-button" href="#news-detail"><span>XEM THÊM</span></a>
+
+                </div>
+
+            </div>
+
+            <div class="news-item">
+
+                <div class="news-img">
+                    <a href="#news-detail">
+                        <img src="~/Images/news/news-02.jpg">
+                    </a>
+                </div>
+
+                <div class="news-info">
+
+                    <div class="news-content">
+                        <a href="#news-detail"><h3 class="news-title">“ĐẠI TIỆC TRI ÂN: Săn deal xịn - Khui quà chất!” duy nhất ngày 1/8/2024 trên toàn quốc</h3></a>
+                        <div class="date">
+                            <i class="fa-regular fa-calendar"></i>
+                            31/07/2024
+                        </div>
+                        <p>Chào mừng 49 năm thành lập thương hiệu PacificTravel (01.8.1975 - 01.8.2024), Công ty Dịch vụ Lữ hành PacificTravel tổ chức sự kiện “ĐẠI TIỆC TRI ÂN: Săn deal xịn - Khui quà chất” tại văn phòng 102 Nguyễn Huệ, Quận 1, Tp. Hồ Chí Minh và 18 Chi nhánh trên toàn quốc duy nhất trong ngày 01.8.2024 (từ 08h00 đến 18h00). Sự kiện đặc biệt nhằm Tri ân các thành viên đang làm việc tại Lữ hành PacificTravel, Khách hàng, Đối tác và Cộng đồng - xã hội.</p>
+                    </div>
+
+                    <a class="news-button" href="#news-detail"><span>XEM THÊM</span></a>
+
+                </div>
+
+            </div>
+
+            <div class="news-item">
+
+                <div class="news-img">
+                    <a href="#news-detail">
+                        <img src="~/Images/news/news-03.jpg">
+                    </a>
+                </div>
+
+                <div class="news-info">
+
+                    <div class="news-content">
+                        <a href="#news-detail"><h3 class="news-title">Chúng tôi chọn “Sống Xanh - Du Lịch Xanh”</h3></a>
+                        <div class="date">
+                            <i class="fa-regular fa-calendar"></i>
+                            26/06/2024
+                        </div>
+                        <p>Từ thập niên 70, khi Công ty Dịch vụ Lữ hành PacificTravel bắt đầu khai thác, phục vụ những đoàn khách quốc tế đầu tiên đến Việt Nam, thông điệp “không mang gì về ngoài những bức ảnh, không để lại gì ngoài những dấu chân” đã bén rễ trong mỗi chương trình tour của Công ty phục vụ du khách Đức, Pháp, Mỹ. Thông điệp này cũng chính là nền tảng cốt lõi trong triết lý kinh doanh của Lữ hành PacificTravel “Cam kết nỗ lực mang lại những giá trị dịch vụ tốt nhất cho khách hàng, đối tác, bảo đảm sự phát triển bền vững, hài hòa lợi ích doanh nghiệp và cộng đồng xã hội”.</p>
+                    </div>
+
+                    <a class="news-button" href="#news-detail"><span>XEM THÊM</span></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>

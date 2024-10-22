@@ -1,0 +1,72 @@
+﻿@{
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+    ViewBag.Title = "Đăng Nhập - PacificTravel";
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/auth/auth.css">
+}
+
+@section OverlayGradientOnBanner {
+    <div class="overlay dark-side-image"></div>
+}
+
+<section class="ftco-section" style="padding-top: 10em;">
+    <div class="container">
+
+        <div class="auth-container">
+
+            <form action="/Auth/Login" method="post">
+
+                <span class="form-title">
+                    Đăng Nhập
+                </span>
+                
+                <p style="color:red">@ViewBag.Error</p>
+
+                <div class="form-content">
+                    <div class="form-item">
+                        <i class="fa-solid fa-user"></i>
+
+                        <div class="form-item-input" data-validate="Email đúng: someone@example.com">
+                            <input type="email" required class="auth-input" id="login-email" placeholder=" " name="login-email">
+                            <label for="login-email" class="auth-label">Email</label>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <i class="fa-solid fa-lock"></i>
+
+                        <div class="form-item-input" data-validate="Nhập mật khẩu">
+                            <input type="password" required class="auth-input" id="login-pass" placeholder=" " name="login-pass">
+                            <label for="login-pass" class="auth-label">Mật Khẩu</label>
+                            <i class="fa-solid fa-eye-slash" id="password-eye"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-item" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem">
+                    <div class="form-item-check">
+                        <input type="checkbox" class="auth-check" id="login-check">
+                        <label for="login-check" class="auth-label">Nhớ mật khẩu</label>
+                    </div>
+
+                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                </div>
+
+                <button type="submit" class="auth-button">Đăng Nhập</button>
+
+                <p class="no-account">
+                    Bạn không có tài khoản? <a href="/Auth/SignUp">Đăng Ký</a>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/Scripts/auth/auth.js"></script>
+}

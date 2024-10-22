@@ -1,0 +1,145 @@
+﻿.hero-wrap {
+    display: none;
+}
+
+label {
+    margin: 0;
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    .auth-container form {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        border: 1px solid black;
+        border-radius: 1rem;
+        width: 450px;
+    }
+
+    .auth-container form .form-title {
+        margin-bottom: 2rem;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+        .auth-container form .form-content,
+        .auth-container form .form-content .form-item {
+            display: grid;
+        }
+
+            .auth-container form .form-content {
+                row-gap: 1.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+        .auth-container form .form-content .form-item {
+            grid-template-columns: max-content 1fr;
+            align-items: center;
+            column-gap: 0.75rem;
+            border-bottom: 2px solid black;
+        }
+
+            .auth-container form .form-content .form-item .form-item-input input {
+                width: 100%;
+                padding-block: 0.8rem;
+                background: none;
+                color: black;
+                position: relative;
+                z-index: 1;
+                border: none;
+            }
+
+            .auth-container form .form-content .form-item .form-item-input input:focus {
+                outline: none;
+            }
+
+            .auth-container form .form-content .form-item .form-item-input .auth-input:focus ~ .auth-label,
+            .auth-container form .form-content .form-item .form-item-input .auth-input:not(:placeholder-shown) ~ .auth-label {
+                top: -12px;
+                font-size: small;
+            }
+
+            .auth-container form .form-content .form-item .form-item-input {
+                position: relative;
+            }
+
+                .auth-container form .form-content .form-item .form-item-input .auth-input {
+                    position: relative;
+                }
+
+                    #login-pass, #signup-pass, #singup-confirm-pass {
+                        padding-right: 1.5rem;
+                    }
+
+                .auth-container form .form-content .form-item .form-item-input .auth-label {
+                    position: absolute;
+                    left: 0;
+                    top: 13px;
+                    font-weight: 500;
+                    transition: top 0.3s, font-size 0.3s;
+                }
+
+            #password-eye, #confirm-password-eye {
+                position: absolute;
+                right: 0;
+                top: 18px;
+                z-index: 10;
+                cursor: pointer;
+            }
+
+            .auth-container form .form-item .form-item-check {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+                .auth-container form .form-item .form-item-check .auth-label,
+                .auth-container form .form-item .forgot-password,
+                .auth-container form .no-account {
+                    font-size: small;
+                    color: black;
+                }
+
+        .auth-container form .form-item .forgot-password {
+            font-weight: 400;
+            color: black;
+        }
+
+                    .auth-container form .form-item .forgot-password:hover {
+                        color: #ff6a00;
+                    }
+
+
+        .auth-container form .form-item .form-item-check {
+            column-gap: .5rem;
+        }
+
+        .auth-container form .auth-button {
+            cursor: pointer;
+            border-radius: 31px;
+            margin: 2rem;
+            transition: ease .6s;
+        }
+
+            .auth-container form .auth-button:hover {
+                color: white;
+                background-color: #ff6a00;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+            }
+
+        .auth-container form .no-account {
+            text-align: center;
+            margin: 0;
+            font-weight: 400;
+            color: black;
+        }
+
+            .auth-container form .no-account a:hover {
+                color: #ff6a00;
+            }

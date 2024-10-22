@@ -1,0 +1,46 @@
+﻿.hero-wrap {
+    display: none;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .contact-container .contact-item {
+        display: flex;
+        background-color: #f2f2f2;
+        height: 400px;
+        width: 400px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .contact-container .contact-item .contact-icon {
+        width: 150px;
+        height: 150px;
+        background-color: #ff6c00;
+        color: white;
+        border-radius: 50%;
+        align-content: center;
+        text-align: center;
+    }
+
+        .contact-container .contact-item .contact-title {
+            padding: 10px;
+            color: #ff6c00;
+            font-weight: bold;
+        }
+
+        .contact-container .contact-item .contact-description {
+            color: black;
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+.map-container {
+    margin-top: 135px;
+}

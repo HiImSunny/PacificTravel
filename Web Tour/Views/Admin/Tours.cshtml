@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Web_Tour.Models.TOUR>
+
+@{
+    ViewBag.Title = "Tours";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+
+    ViewBag.group = "Tours";
+    ViewBag.active = "Tours";
+}
+
+@section Head {
+    <link href="~/Content/admin/tours.css" rel="stylesheet" />
+}
+
+@section NavBar {
+    <div class="navbar">
+        <a class="new-tour" href="/Admin/NewTour">Tạo Tour</a>
+        <p class="tour-id" style="padding-right: 97px;">Mã Tour</p>
+        <p class="tour-name" style="padding-right: 368px;">Tên Tour</p>
+        <p class="tour-start-time" style="padding-right: 45px;">Ngày đi</p>
+        <p class="tour-price">Giá</p>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="tour-container">
+
+        @foreach (var list in Model)
+        {
+            <div class="tour-item">
+                <div class="tour-img-container">
+                    <div class="tour-img">
+                        <a href="#tour-detail">
+                            <img src="@Url.Content("~/Images/tour/" + @list.ANH_BIA_TOUR)" alt="@list.ANH_BIA_TOUR">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tour-info">
+                    <div class="tour-details">
+                        <div class="tour-content">
+                            <p class="tour-id">@list.ID_TOUR</p>
+                            <p class="tour-name">@list.TEN_TOUR</p>
+                            <p class="tour-start-time">@list.NGAY_DI.ToString("dd/MM/yyyy")</p>
+                            <p class="tour-price">@String.Format("{0:0,0}", @list.GIA_NGUOI_LON) VNĐ</p>
+                        </div>
+                    </div>
+
+                    <div class="tour-action">
+
+                        <div class="row-gap-1" style=" display: flex; flex-wrap: wrap; flex-direction: column; ">
+                            <div class="row" style="justify-content: space-between;">
+                                <a class="action-item edit col-6" href="#Edit">
+                                    <span>Sửa</span>
+                                </a>
+
+                                <a class="action-item details col-6" href="#Details">
+                                    <span>Chi Tiết</span>
+                                </a>
+                            </div>
+
+                            <div class="row">
+                                <a class="action-item delete col-12" href="#Delete">
+                                    <span>Xóa</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>
+

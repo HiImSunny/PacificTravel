@@ -1,0 +1,197 @@
+﻿@model Web_Tour.Models.TOUR
+
+@{
+    ViewBag.Title = "NewTour";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+
+    ViewBag.group = "Tours";
+    ViewBag.active = "Tours";
+}
+
+@section Head {
+    <link href="~/Content/admin/newtour.css" rel="stylesheet" />
+}
+
+@section NavBar {
+    <div class="navbar">
+        <h4>Tạo Tour</h4>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="new-tour-container">
+
+        <div>
+            <form action="/Admin/NewTour" method="post" enctype="multipart/form-data">
+
+                <div class="form-section">
+
+                    <div class="row tour-info col-lg-8 mx-auto">
+                        <h5 style="margin: 0">1. Thông tin cơ bản</h5>
+
+                        <div class="row">
+                            <div class="form-item col-md-6">
+                                <label for="id-tour" class="input-label">Mã tour <span style="color: red">(*)</span></label>
+                                @Html.DropDownList("ID_TOUR", null, new { @onchange = "getTourDetails(this.value)" })
+                            </div>
+
+                            <div class="col-md-6"></div>
+
+                            <div class="form-item col-md-6">
+                                <label for="ten-tour" class="input-label">Tên tour <span style="color: red">(*)</span></label>
+                                <input type="text" required class="input" id="ten-tour" placeholder=" " name="ten-tour">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="id-trang-thai" class="input-label">Trạng Thái <span style="color: red">(*)</span></label>
+                                @Html.DropDownList("ID_TRANG_THAI")
+                            </div>
+
+                            <div class="form-item col-md-12" id="text-area">
+                                <label for="mo-ta" class="input-label">Mô tả <span style="color: red">(*)</span></label>
+                                <textarea name="mo-ta" id="mo-ta">Nhập mô tả tour</textarea>
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="ngay-di" class="input-label">Ngày đi <span style="color: red">(*)</span></label>
+                                <input type="date" required class="input" id="ngay-di" placeholder=" " name="ngay-di">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="ngay-ve" class="input-label">Ngày về <span style="color: red">(*)</span></label>
+                                <input type="date" required class="input" id="ngay-ve" placeholder=" " name="ngay-ve">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="dia-diem-khoi-hanh" class="input-label">Địa điểm khởi hành <span style="color: red">(*)</span></label>
+                                <input type="text" required class="input" id="dia-diem-khoi-hanh" placeholder=" " name="dia-diem-khoi-hanh">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="dia-diem-tham-quan" class="input-label">Địa điểm tham quan <span style="color: red">(*)</span></label>
+                                <input type="text" required class="input" id="dia-diem-tham-quan" placeholder=" " name="dia-diem-tham-quan">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="hinh-thuc-di-chuyen" class="input-label">Hình thức di chuyển</label>
+                                <input type="text" class="input" id="hinh-thuc-di-chuyen" placeholder=" " name="hinh-thuc-di-chuyen">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="id-hdv" class="input-label">Hướng Dẫn Viên <span style="color: red">(*)</span></label>
+                                @Html.DropDownList("ID_HDV")
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-section tour-date">
+                    <div class="row tour-info col-lg-8 mx-auto">
+                        <h5 style="margin: 0">2. Thông tin giá tour</h5>
+
+                        <div class="row">
+
+                            <div class="form-item col-md-12">
+                                <label for="giam-gia" class="input-label">Giảm giá</label>
+                                <input type="number" required class="input" id="giam-gia" placeholder=" " name="giam-gia">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="gia-nguoi-lon" class="input-label">Giá người lớn <span style="color: red">(*)</span></label>
+                                <input type="number" required class="input" id="gia-nguoi-lon" placeholder=" " name="gia-nguoi-lon">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="gia-tre-em" class="input-label">Giá trẻ em <span style="color: red">(*)</span></label>
+                                <input type="number" re class="input" id="gia-tre-em" placeholder=" " name="gia-tre-em">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section tour-img">
+                    <div class="row tour-info col-lg-8 mx-auto">
+                        <h5 style="margin: 0">3. Ảnh bìa tour</h5>
+
+                        <div class="row">
+
+                            <div class="form-item col-md-12">
+                                <label for="anh-bia-tour" class="input-label">Đặt ảnh bìa tour <span style="color: red">(*)</span></label>
+                                <input type="file" name="anhbiatour" id="anhbiatour" value="" class="input" required />
+                                <img id="previewImage" src="" alt="Ảnh bìa tour" style="width: 200px; height: 200px; display: none">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-wrapper">
+                    <button class="create-tour-button" type="submit">Tạo Tour</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.getElementById('gia-nguoi-lon').addEventListener('input', function () {
+        var giaNguoiLon = parseFloat(this.value);
+        if (!isNaN(giaNguoiLon)) {
+            document.getElementById('gia-tre-em').value = (giaNguoiLon / 2).toFixed(0); // Làm tròn số
+        } else {
+            document.getElementById('gia-tre-em').value = ''; // Xóa giá trị nếu không hợp lệ
+        }
+    });
+
+    function getTourDetails(tourId) {
+        $.ajax({
+            url: '/Admin/GetTourDetails',
+            data: { id: tourId },
+            success: function (data) {
+                // Check if data exists
+                if (data) {
+                    // Populate fields with data
+                    $("#ten-tour").val(data.tenTour);
+                    $("#dia-diem-khoi-hanh").val(data.diaDiemKhoiHanh);
+                    $("#dia-diem-tham-quan").val(data.diaDiemThamQuan);
+
+                    // Disable input fields
+                    $("#ten-tour, #dia-diem-khoi-hanh, #dia-diem-tham-quan").prop("readonly", true);
+                } else {
+                    // Clear fields if no data is found
+                    $("#ten-tour").val("");
+                    $("#dia-diem-khoi-hanh").val("");
+                    $("#dia-diem-tham-quan").val("");
+
+                    // Enable input fields if no data found
+                    $("#ten-tour, #dia-diem-khoi-hanh, #dia-diem-tham-quan").prop("readonly", false);
+                }
+            },
+        });
+    }
+
+    function convertJsonDate(jsonDate) {
+        // Extract the milliseconds from the JSON date format
+        var timestamp = parseInt(jsonDate.match(/\d+/)[0], 10);
+        return new Date(timestamp);
+    }
+
+    function formatDate(date) {
+        const day = ("0" + date.getDate()).slice(-2); // Get day
+        const month = ("0" + (date.getMonth() + 1)).slice(-2); // Get month
+        const year = date.getFullYear(); // Get year
+        return `${year}-${month}-${day}`; // Return formatted date
+    }
+
+    function removeAllChildren(id) {
+        const parent = document.getElementById(id);
+
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    }
+</script>

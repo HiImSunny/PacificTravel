@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "BookingPassenger";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+
+    ViewBag.topBannerUrl = "/Images/tour-booking-banner.jpg";
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/tour/booking.css">
+}
+
+<style>
+    .slider-text {
+        width: 70%;
+    }
+</style>
+
+@section OverlayGradientOnBanner {
+    <div class="overlay dark-side-image"></div>
+}
+
+@section TopBannerContent {
+    <div class="container" style="display: flex; justify-content: center;">
+        <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
+            <div class="top-banner-content">
+                <h1>Đặt Tour Thành Công</h1>
+            </div>
+        </div>
+    </div>
+}
+
+<section class="ftco-section">
+    <div class="container">
+
+        <div class="row progress-wizard" style="border-bottom:0;">
+            <div class="col-sm-3 col-xs-12 progress-wizard-step  complete">
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <a href="javascript:void(0)" class="progress-wizard-dot">
+                    <span style="font-size: 20px">1</span>. Chọn dịch vụ
+                </a>
+            </div>
+            <div class="col-sm-3 col-xs-12 progress-wizard-step  complete">
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <a href="javascript:void(0)" class="progress-wizard-dot">
+                    <span style="font-size: 20px">2</span>. Thanh toán
+                </a>
+            </div>
+            <div class="col-sm-3 col-xs-12 progress-wizard-step complete ">
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <a href="javascript:void(0)" class="progress-wizard-dot">
+                    <span style="font-size: 20px">3</span>. Xác nhận
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="alert alert-success alert-dismissible" role="alert" data-gtm-vis-recent-on-screen9489976_22="312" data-gtm-vis-first-on-screen9489976_22="312" data-gtm-vis-total-visible-time9489976_22="100" data-gtm-vis-has-fired9489976_22="1">
+                    Xin cảm ơn! Booking của bạn đã được xác nhận. Thông tin đã được gửi trong email của bạn.
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-7 col-xs-12">
+                <div class="infoTitle">
+                    <h2>Thông tin đặt chỗ</h2>
+                </div>
+                <div class="confirmDetilas">
+                    <div class="image-box-relative image-box-3x2">
+                        <img src="~/Images/tour/mientay/sailing-ship-where-Ca-Mau-Province_208508464.jpg">
+                    </div>
+                    <div class="confirmInfo">
+                        <div class="infoTitle">
+                            <h2>
+                                <a target="_blank" href="/tour-trong-nuoc/1141/du-lich-my-tho-can-tho-soc-trang-bac-lieu-ca-mau">Du Lịch Mỹ Tho - Cần Thơ - Sóc Trăng - Bạc Liêu - Cà Mau</a>
+                            </h2>
+                        </div>
+                        <p>
+                            - Khởi hành: thứ 5 hàng tuần
+                            - Đến Mỹ Tho thưởng thức trái cây theo mùa, nghe nhạc tài tử Nam Bộ
+                            - Viếng chùa Som Rông với các công trình độc đáo
+                            - Chụp ảnh lưu niệm với mốc Toạ độ quốc gia - Panô biểu tượng Mũi Cà Mau
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-5 col-xs-12">
+                <aside>
+                    <div class="bookDetailsInfo" style="margin-top: 47px">
+                        <div class="infoArea">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <i class="fa fa-barcode" aria-hidden="true"></i> Mã tour:
+                                    <span>PT01-17102024</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-location-arrow" aria-hidden="true"></i> Điểm đến:
+                                    <span>Miền Tây</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-user" aria-hidden="true"></i> Tên:
+                                    <span>Lương Khang</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ:
+                                    <span>ádasd</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone" aria-hidden="true"></i> Số Điện thoại:
+                                    <span>0943505127</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i> Email:
+                                    <span>duykhang.sunext@gmail.com</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>Ngày đi:
+                                    <span>17-10-2024</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>Ngày về:
+                                    <span>20-10-2024</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>Thời gian:
+                                    <span>4 ngày 3 đêm</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-user-secret" aria-hidden="true"></i>Giá Người lớn
+                                    :
+                                    <span><strong>4.879.000</strong></span>
+                                    <span>
+                                        X 1 đ
+                                    </span>
+                                </li>
+
+                            </ul>
+                            <div class="priceTotal">
+                                <h2>
+                                    Tổng: <span>4.879.000</span>
+                                    <span style="font-size: 16px;
+                                        color: #000;
+                                        font-weight: 500;
+                                        line-height: 21px;
+                                        text-transform: lowercase;"> đ</span>
+                                </h2>
+                            </div>
+                            <div class="text-center" style="margin-top: 15px">
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,70 @@
+﻿.hero-wrap {
+    height: 500px;
+}
+
+.slider-text {
+    height: 500px;
+    text-align: center;
+}
+
+.top-banner-content {
+    width: 100%;
+}
+
+ul {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    margin-top: 5px;
+}
+
+.profile-container {
+    display: flex;
+}
+
+.profile-container .admin-button {
+    display: block;
+    padding: 15px;
+    background-color: #ff6a00;
+    width: 250px;
+    height: 60px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.button-container {
+    margin-top: 40px;
+    text-align: -webkit-center;
+}
+
+.account-info {
+    padding-right: 50px;
+    border-right: 1px solid black;
+}
+
+.account-info ul li {
+    position: relative;
+    padding-left: 150px;
+    padding-top: 15px;
+    color: #333333;
+}
+
+    .account-info ul li span {
+        position: absolute;
+        color: #999999;
+        font-weight: 600;
+        left: 0;
+    }
+
+.tour-bought-list {
+    text-align: center;
+    width: 100%;
+    padding-left: 50px;
+}
+
+    .tour-bought-list .columns {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 15px;
+    }

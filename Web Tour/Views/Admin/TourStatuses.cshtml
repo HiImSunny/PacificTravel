@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Web_Tour.Models.TRANG_THAI_TOUR>
+
+@{
+    ViewBag.Title = "TourStatuses";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+
+    ViewBag.group = "Tours";
+    ViewBag.active = "TourStatuses";
+}
+
+@section Head {
+    <link href="~/Content/admin/tourstatuses.css" rel="stylesheet" />
+}
+
+@section NavBar {
+    <div class="navbar">
+        <a class="new-tour-status" href="/Admin/NewTourStatus">Tạo Mới</a>
+        <p class="tour-status-id" style="padding-right: 95px;">Mã Trạng Thái</p>
+        <p class="tour-status-name" style="padding-right: 370px;">Tên Trạng Thái</p>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="tour-status-container">
+
+        @foreach (var loai in Model)
+        {
+            <div class="tour-status-item">
+
+                <div class="tour-status-info">
+                    <div class="tour-status-details">
+                        <div class="tour-status-content">
+                            <p class="tour-status-id">@loai.ID_TRANG_THAI</p>
+                            <p class="tour-status-name">@loai.TEN_TRANG_THAI</p>
+                        </div>
+                    </div>
+
+                    <div class="tour-status-action">
+
+                        <a class="action-item edit" href="@Url.Action("EditTourStatus", "Admin", new { id = loai.ID_TRANG_THAI })">
+                            <span>Sửa</span>
+                        </a>
+                        <a class="action-item delete" href="@Url.Action("DeleteTourStatus", "Admin", new { id = loai.ID_TRANG_THAI })">
+                            <span>Xóa</span>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>
+
+<script>
+    const isEmptyEl = el => {
+        return el.innerHTML.trim().length === 0;
+    }
+
+    if (isEmptyEl(document.querySelector(".tour-status-container"))) {
+        const element = document.querySelector(".tour-status-container");
+
+        const para = document.createElement("p");
+        const node = document.createTextNode("Hiện không có trạng thái nào.");
+        para.appendChild(node);
+
+        para.style.textAlign = "center";
+
+        element.appendChild(para);
+    }
+</script>

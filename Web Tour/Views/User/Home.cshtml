@@ -1,0 +1,376 @@
+﻿
+@{
+    ViewBag.Title = "Đặt tour du lịch giá rẻ với PacificTravel";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+
+    ViewBag.active = "Home";
+    ViewBag.topBannerUrl = "/Images/home-banner.jpg";
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/user/home.css">
+}
+
+@section OverlayGradientOnBanner {
+    <div class="overlay dark-side-image"></div>
+}
+
+@section TopBannerContent {
+    <div class="container">
+        <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
+            <div class="top-banner-content">
+                <p style="font-family: Dancing Script, cursive; font-size: 45px; color: #ff6c00; margin-top: 0">Welcome to Du Lịch Việt</p>
+                <h1>Khám phá địa điểm yêu thích của bạn với chúng tôi</h1>
+                <p>Du lịch đến bất kì nơi nào bạn chỉ cần liên hệ với chúng tôi</p>
+            </div>
+        </div>
+    </div>
+}
+
+@section TourSearchBar {
+    <div class="container">
+        <div class="search-bar-container">
+            <div class="search-bar">
+                <div class="search-options">
+                    <div class="option">
+                        <label>TOUR</label>
+
+                        <div class="tour-container">
+                            <i class="fa-solid fa-magnifying-glass" style="color: #a9a9a9;"></i>
+                            <input type="text" placeholder="Du lịch Hà Nội - Yên Tử">
+                        </div>
+                    </div>
+                    <div class="option">
+                        <label>NGÀY KHỞI HÀNH</label>
+                        <div class="datepicker-container">
+                            <i class="fa-regular fa-calendar"></i>
+                            <input class="input-date" type="date" placeholder="Ngày Khởi Hành">
+                        </div>
+                    </div>
+                    <div class="option">
+                        <label>NGÀY TRỞ VỀ</label>
+
+                        <div class="datepicker-container">
+                            <i class="fa-regular fa-calendar"></i>
+                            <input class="input-date" type="date" placeholder="Ngày Trở Về">
+                        </div>
+                    </div>
+                    <div class="option">
+                        <label>KHOẢNG GIÁ</label>
+
+                        <div class="select-container">
+                            <i class="fa-solid fa-chevron-down select-icon" style="color: #a9a9a9;"></i>
+                            <select class="select-box">
+                                <option>Chọn khoảng giá</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="search-button">TÌM KIẾM</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<section class="ftco-section">
+    <div class="container">
+
+        <div class="tour-container swiper">
+            <div class="section-text">
+                <h2>TOUR GIẢM GIÁ</h2>
+            </div>
+
+            <div class="card-wrapper">
+                <div class="tour-slider swiper-wrapper">
+                    <div class="slide-item swiper-slide">
+                        <a class="tour-img" href="#tour-detail">
+                            <img src="~/Images/tour/singapore/singapore-banner.jpg" alt="Tour Hạ Long - Quảng Ninh">
+                        </a>
+
+                        <div class="tour-info">
+
+                            <div class="price-info">
+                                <p class="text">Giá từ</p>
+                                <p class="price">4.990.000đ</p>
+                                <p class="info">2 ngày 1 đêm</p>
+                            </div>
+
+                            <div class="tour-promotion">
+                                <div class="promotion-text">Giảm 490.000/khách</div>
+                            </div>
+
+                            <div class="tour-details">
+                                <h4 class="tour-name"><a href="#tour-detail">Du Lịch Hạ Long - Khám Phá Vịnh Xanh</a></h4>
+                                <p class="tour-visit-location"><a href="#tour-detail">[Hang Sửng Sốt -  Hang Luồn - đảo Ti Tốp]</a></p>
+
+                                <div class="relative-tours">
+                                    <a class="relative-tour" href="#relative-tour">
+                                        <span class="tour-name">Tour Hạ Long</span>
+                                        <span class="tour-quantity">có 6 tour</span>
+                                    </a>
+                                    <a class="relative-tour" href="#relative-tour">
+                                        <span class="tour-name">Tour Quảng Ninh</span>
+                                        <span class="tour-quantity">có 13 tour</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <a class="tour-buy-button" href="#tour-detail">Mua tour</a>
+
+                        </div>
+                    </div>
+
+                    <div class="slide-item swiper-slide">
+                        <a class="tour-img" href="#tour-detail">
+                            <img src="~/Images/tour/singapore/singapore-banner.jpg" alt="Tour Cần Thơ - Đà Lạt">
+                        </a>
+
+                        <div class="tour-info">
+
+                            <div class="price-info">
+                                <p class="text">Giá từ</p>
+                                <p class="price">5.990.000</p>
+                                <p class="info">3 ngày 2 đêm</p>
+                            </div>
+
+                            <div class="tour-promotion">
+                                <div class="promotion-text">Giảm 1.000.000/khách</div>
+                            </div>
+
+                            <div class="tour-details">
+                                <h4 class="tour-name"><a href="#tour-detail">Du Lịch Đà Lạt</a></h4>
+                                <p class="tour-visit-location"><a href="#tour-detail">[Thành phố Hoa Đà Lạt]</a></p>
+
+                                <div class="relative-tours">
+                                    <a class="relative-tour" href="#relative-tour">
+                                        <span class="tour-name">Tour Đà Lạt</span>
+                                        <span class="tour-quantity">có 10 tour</span>
+                                    </a>
+                                    <a class="relative-tour" href="#relative-tour">
+                                        <span class="tour-name">Tour Cần Thơ</span>
+                                        <span class="tour-quantity">có 14 tour</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <a class="tour-buy-button" href="#tour-detail">Mua tour</a>
+
+                        </div>
+                    </div>
+
+                    <div class="slide-item swiper-slide">
+                        <a class="tour-img" href="#tour-detail">
+                            <img src="~/Images/tour/singapore/singapore-banner.jpg" alt="Tour Quy Nhơn - Tuy Hòa - Nghinh Phong - Gành Đá Dĩa - Kỳ Co - Eo Gió">
+                        </a>
+
+                        <div class="tour-info">
+
+                            <div class="price-info">
+                                <p class="text">Giá từ</p>
+                                <p class="price">11.750.000đ</p>
+                                <p class="info">4 ngày 3 đêm</p>
+                            </div>
+
+                            <div class="tour-promotion">
+                                <div class="promotion-text">Giảm 760.000đ/khách</div>
+                            </div>
+
+                            <div class="tour-details">
+                                <h4 class="tour-name"><a href="#tour-detail">Du Lịch Quy Nhơn - Tuy Hòa - Nghinh Phong - Gành Đá Dĩa - Kỳ Co - Eo Gió</a></h4>
+                                <p class="tour-visit-location"><a href="#tour-detail">[Bãi Môn - Hải đăng Mũi Điện - Gành Đá Dĩa - tháp Nghinh Phong]</a></p>
+
+                                <div class="relative-tours">
+                                    <a class="relative-tour" href="#relative-tour">
+                                        <span class="tour-name">Tour Quy Nhơn </span>
+                                        <span class="tour-quantity">có 5 tour</span>
+                                    </a>
+                                    <a class="relative-tour" href="#relative-tour">
+                                        <span class="tour-name">Tour Vũng Tàu</span>
+                                        <span class="tour-quantity">có 12 tour</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <a class="tour-buy-button" href="#tour-detail">Mua tour</a>
+
+                        </div>
+                    </div>
+
+                    <div class="slide-item swiper-slide">
+                        <a class="tour-img" href="#tour-detail">
+                            <img src="~/Images/tour/singapore/singapore-banner.jpg" alt="Tour Singapore - Malaysia">
+                        </a>
+
+                        <div class="tour-info">
+
+                            <div class="price-info">
+                                <p class="text">Giá từ</p>
+                                <p class="price">11.990.000đ</p>
+                                <p class="info">4 ngày 3 đêm</p>
+                            </div>
+
+                            <div class="tour-promotion">
+                                <div class="promotion-text">Giảm 2.000.000đ/khách</div>
+                            </div>
+
+                            <div class="tour-details">
+                                <h4 class="tour-name"><a href="#tour-detail">Du Lịch Đà Nẵng - Bà Nà - Hội An - Động Thiên Đường - Huế</a></h4>
+                                <p class="tour-visit-location"><a href="#tour-detail">[Chùa Linh Ứng Bãi Bụt - Chùa Thiên Mụ - động Thiên Đường - Động Thiên Đường]</a></p>
+
+                                <div class="relative-tours">
+                                    <a class="relative-tour" href="#relative-tour">
+                                        <span class="tour-name">Tour Đà Nẵng</span>
+                                        <span class="tour-quantity">có 9 tour</span>
+                                    </a>
+                                    <a class="relative-tour" href="#relative-tour">
+                                        <span class="tour-name">Tour Hội An</span>
+                                        <span class="tour-quantity">có 10 tour</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <a class="tour-buy-button" href="#tour-detail">Mua tour</a>
+
+                        </div>
+                    </div>
+
+                    <div class="slide-item swiper-slide">
+                        <a class="tour-img" href="#tour-detail">
+                            <img src="~/Images/tour/singapore/singapore-banner.jpg" alt="Tour Singapore - Malaysia">
+                        </a>
+
+                        <div class="tour-info">
+
+                            <div class="price-info">
+                                <p class="text">Giá từ</p>
+                                <p class="price">6.139.000đ</p>
+                                <p class="info">3 ngày 2 đêm</p>
+                            </div>
+
+                            <div class="tour-promotion">
+                                <div class="promotion-text">Giảm 149.000/khách</div>
+                            </div>
+
+                            <div class="tour-details">
+                                <h4 class="tour-name"><a href="#tour-detail">Du Lịch Phú Quốc - Khám Phá Bắc Đảo - Safari - Vinwonder - Grand World</a></h4>
+                                <p class="tour-visit-location"><a href="#tour-detail">[Vườn tiêu - Lò chế biến rượu Sim rừng Phú Quốc - Vinpearl Safari Phú Quốc - VinWonder Phú Quốc]</a></p>
+
+                                <div class="relative-tours">
+                                    <a class="relative-tour" href="#relative-tour">
+                                        <span class="tour-name">Tour Phú Quốc</span>
+                                        <span class="tour-quantity">có 12 tour</span>
+                                    </a>
+                                    <a class="relative-tour" href="#relative-tour">
+                                        <span class="tour-name">Tour Kiên Giang</span>
+                                        <span class="tour-quantity">có 13 tour</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <a class="tour-buy-button" href="#tour-detail">Mua tour</a>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="ftco-section" style="padding-top: 0">
+    <div class="container">
+
+        <div class="ad-container">
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <a href="#ad-tour-banner" class="ad-tour-banner">
+                        <img src="~/Images/ad-banner/Cambodia-16July.png" alt="Cambodia Tour" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <a target="_blank" href="https://www.mobifone.vn/dich-vu-di-dong/chi-tiet-goi-cuoc/go-china-GC" class="ad-tour-banner">
+                        <img src="~/Images/ad-banner/2024-mobi-Go-China.jpg" alt="Mobi Go China" />
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="ftco-section" style="padding-top: 0">
+    <div class="container">
+
+        <div class="commitment-container">
+
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="commitment-box">
+                        <div class="commitment-icon">
+                            <i class="fa-solid fa-hand-holding-dollar fa-3x" style="color: #007aff;"></i>
+                        </div>
+                        <div class="commitment-content">
+                            <span class="commitment-title">GIÁ TỐT - NHIỀU ƯU ĐÃI</span>
+                            <p class="commitment-description">Ưu đãi và quà tặng hấp dẫn khi mua tour online</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="commitment-box">
+                        <div class="commitment-icon">
+                            <i class="fa-solid fa-cart-shopping fa-3x" style="color: #007aff;"></i>
+                        </div>
+                        <div class="commitment-content">
+                            <span class="commitment-title">THANH TOÁN AN TOÀN</span>
+                            <p class="commitment-description">Được bảo mật bởi tổ chức quốc tế Global Sign</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="commitment-box">
+                        <div class="commitment-icon">
+                            <i class="fa-solid fa-comments fa-3x" style="color: #007aff;"></i>
+                        </div>
+                        <div class="commitment-content">
+                            <span class="commitment-title">TƯ VẤN MIỄN PHÍ</span>
+                            <p class="commitment-description">Hỗ trợ tư vấn online miễn phí và đáng tin cậy</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="commitment-box">
+                        <div class="commitment-icon" style="width: 85px">
+                            <i class="fa-solid fa-star fa-3x" style="color: #007aff;"></i>
+                        </div>
+                        <div class="commitment-content">
+                            <span class="commitment-title">THƯƠNG HIỆU UY TÍN</span>
+                            <p class="commitment-description">Thương hiệu lữ hành hàng đầu Việt Nam</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/Scripts/user/home.js"></script>
+}

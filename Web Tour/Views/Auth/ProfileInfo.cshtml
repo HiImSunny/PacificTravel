@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "ProfileInfo";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+
+    ViewBag.topBannerUrl = "/Images/profile-info-banner.jpg";
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/auth/profile-info.css">
+}
+
+@section OverlayGradientOnBanner {
+    <div class="overlay dark-side-image"></div>
+}
+
+@section TopBannerContent {
+    <div class="container" style="display: flex; justify-content: center;">
+        <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
+            <div class="top-banner-content">
+                <h1>Hồ sơ của tôi</h1>
+            </div>
+        </div>
+    </div>
+}
+
+<section class="ftco-section">
+    <div class="container">
+
+        <div class="profile-container">
+
+            <div class="account-info">
+                <h2>Thông Tin Cá Nhân</h2>
+
+                <ul>
+                    <li>
+                        <span>Họ Tên</span>
+                        @ViewBag.AccountName
+                    </li>
+                    <li>
+                        <span>Email</span>
+                        @ViewBag.AccountEmail
+                    </li>
+                    <li>
+                        <span>Số Điện Thoại</span>
+                        @ViewBag.AccountPhone
+                    </li>
+                    <li>
+                        <span>Địa Chỉ</span>
+                        @ViewBag.AccountAddress
+                    </li>
+                </ul>
+
+            @if (@Html.Action("IsAdmin", "Admin").ToString() == "True")
+            {
+                <div class="button-container">
+                    <a href="Admin" class="admin-button">Chuyển tới trang Quản Lý</a>
+                </div>
+            }
+
+            </div>
+
+            <div class="tour-bought-list">
+                <h2>Các Tour Đã Đặt</h2>
+
+                <div class="columns">
+                    <div class="column-item">
+                        <span>Mã Đặt Chỗ</span>
+                    </div>
+                    <div class="column-item">
+                        <span>Ngày Đặt</span>
+                    </div>
+                    <div class="column-item">
+                        <span>Tổng Số Chỗ</span>
+                    </div>
+                    <div class="column-item">
+                        <span>Tổng Tiền</span>
+                    </div>
+                    <div class="column-item">
+                        <span>Trạng Thái Thanh Toán</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+

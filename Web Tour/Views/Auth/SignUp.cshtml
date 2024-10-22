@@ -1,0 +1,100 @@
+﻿@{
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+    ViewBag.Title = "Đăng Nhập - PacificTravel";
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/auth/auth.css">
+}
+
+@section OverlayGradientOnBanner {
+    <div class="overlay dark-side-image"></div>
+}
+
+<section class="ftco-section" style="padding-top: 10em;">
+    <div class="container">
+
+        <div class="auth-container">
+
+            <form action="/Auth/SignUp" method="post">
+
+                <span class="form-title">
+                    Đăng Ký
+                </span>
+
+                @ViewBag.Error
+
+                <div class="form-content">
+                    <div class="form-item">
+                        <i class="fa-solid fa-user"></i>
+
+                        <div class="form-item-input">
+                            <input type="text" required class="auth-input" id="signup-name" placeholder=" " name="signup-name">
+                            <label for="signup-email" class="auth-label">Họ và tên (*)</label>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <div class="form-item-input" data-validate="Email đúng: someone@example.com">
+                            <input type="email" required class="auth-input" id="signup-email" placeholder=" " name="signup-email">
+                            <label for="signup-email" class="auth-label">Email (*)</label>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <i class="fa-solid fa-lock"></i>
+
+                        <div class="form-item-input" data-validate="Nhập mật khẩu">
+                            <input type="password" required class="auth-input" id="signup-pass" placeholder=" " name="signup-pass">
+                            <label for="signup-pass" class="auth-label">Mật Khẩu (*)</label>
+                            <i class="fa-solid fa-eye-slash" id="password-eye"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <i class="fa-solid fa-lock"></i>
+
+                        <div class="form-item-input" data-validate="Nhập lại mật khẩu">
+                            <input type="password" required class="auth-input" id="signup-confirm-pass" placeholder=" ">
+                            <label for="signup-confirm-pass" class="auth-label">Nhập Lại Mật Khẩu (*)</label>
+                            <i class="fa-solid fa-eye-slash" id="confirm-password-eye"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <i class="fa-solid fa-phone"></i>
+
+                        <div class="form-item-input">
+                            <input type="tel" required class="auth-input" id="signup-phone" placeholder=" " name="signup-phone">
+                            <label for="signup-phone" class="auth-label">Số Điện Thoại (*)</label>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div class="form-item-input">
+                            <input type="text" required class="auth-input" id="signup-address" placeholder=" " name="signup-address">
+                            <label for="signup-address" class="auth-label">Địa Chỉ (*)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="auth-button">Đăng Ký</button>
+
+                <p class="no-account">
+                    Bạn đã có tài khoản? <a href="/Auth/Login">Đăng Nhập</a>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/Scripts/auth/auth.js"></script>
+}

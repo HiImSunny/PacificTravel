@@ -1,0 +1,180 @@
+﻿@model IEnumerable<Web_Tour.Models.TOUR>
+
+
+@{
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+    ViewBag.Title = "Đặt tour du lịch giá rẻ với PacificTravel";
+
+    ViewBag.active = "Tours";
+    ViewBag.topBannerUrl = "/Images/tour-banner.jpg";
+}
+
+@helper Truncate(string input, int length)
+{
+    if (input == null)
+    {
+        <text></text>
+    }
+
+    else if (input.Length <= length)
+    {
+        @Html.Raw(input)
+    }
+    else
+    {
+        var thisString = input.Substring(0, length);
+        @Html.Raw(thisString)<text>...</text>
+    }
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/user/tours.css">
+}
+
+@section OverlayGradientOnBanner {
+    <div class="overlay dark-side-image"></div>
+}
+
+@section TopBannerContent {
+    <div class="container">
+        <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
+            <div class="top-banner-content">
+                <h1>Đặt ngay tour <br> du lịch tại <span style="color: #ff6c00">PacificTravel</span></h1>
+            </div>
+        </div>
+    </div>
+}
+
+@section TourSearchBar {
+    <div class="container">
+        <div class="search-bar-container">
+            <div class="search-bar">
+                <div class="search-options">
+                    <div class="option">
+                        <label>TOUR</label>
+
+                        <div class="tour-container">
+                            <i class="fa-solid fa-magnifying-glass" style="color: #a9a9a9;"></i>
+                            <input type="text" placeholder="Du lịch Hà Nội - Yên Tử">
+                        </div>
+                    </div>
+                    <div class="option">
+                        <label>NGÀY KHỞI HÀNH</label>
+                        <div class="datepicker-container">
+                            <i class="fa-regular fa-calendar"></i>
+                            <input class="input-date" type="date" placeholder="Ngày Khởi Hành">
+                        </div>
+                    </div>
+                    <div class="option">
+                        <label>NGÀY TRỞ VỀ</label>
+
+                        <div class="datepicker-container">
+                            <i class="fa-regular fa-calendar"></i>
+                            <input class="input-date" type="date" placeholder="Ngày Trở Về">
+                        </div>
+                    </div>
+                    <div class="option" style="border: none">
+                        <label>KHOẢNG GIÁ</label>
+
+                        <div class="select-container">
+                            <i class="fa-solid fa-chevron-down select-icon" style="color: #a9a9a9;"></i>
+                            <select class="select-box">
+                                <option>Chọn khoảng giá</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="search-button">TÌM KIẾM</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<section class="ftco-section">
+    <div class="container">
+
+        <div class="sort-container shrink-container">
+
+            <div class="sort-text">
+                Sắp xếp:
+            </div>
+
+            <div class="sort-type">
+                <a class="sort-item  active" href="#">
+                    [ Ngày gần nhất ]
+                </a>
+                <a class="sort-item " href="#sort=min-price">
+                    [ Giá thấp nhất ]
+                </a>
+                <a class="sort-item " href="#sort=popular">
+                    [ Hấp dẫn nhất ]
+                </a>
+            </div>
+
+        </div>
+
+        <div class="tour-container shrink-container">
+
+            @foreach (var list in Model)
+            {
+
+                <div class="tour-item">
+                    <div class="tour-img">
+                        <a href="#tour-detail">
+                            <img src="@Url.Content("~/Images/tour/" + @list.ANH_BIA_TOUR)" alt="@list.ANH_BIA_TOUR">
+                        </a>
+                    </div>
+
+                    <div class="tour-info">
+                        <div class="tour-details">
+                            <div class="tour-content">
+                                <div class="tour-promotion">
+                                    <div class="promotion-text">Giảm @String.Format("{0:0,0}", @list.GIAM_GIA) VNĐ/khách</div>
+                                </div>
+
+                                <h4 class="tour-name"><a href="#tour-detail">@list.TEN_TOUR</a></h4>
+                                <p class="tour-destination">
+                                    <a href="#tour-detail">@list.DIA_DIEM_KHOI_HANH - @list.DIA_DIEM_THAM_QUAN</a><br />
+
+
+                                    @Truncate(@Html.Action("ConvertHtmlToPlainText", "User", new { html = list.MO_TA }).ToString(), 200)
+                            </div>
+
+                            <div class="tour-action">
+                                <a class="tour-price" href="@Url.Action("Details", "Tour", new { id = list.ID_TOUR})">
+                                    <span class="text">Giá từ</span>
+                                    <span class="price">@String.Format("{0:0,0}", @list.GIA_NGUOI_LON) VNĐ</span>
+                                </a>
+
+                                <div class="tour-choice">
+                                    <ul class="tour-calendar">
+                                        <li>
+                                            <span class="calendar-info">
+                                                <i class="fa-regular fa-calendar"></i>
+                                                @list.NGAY_DI.ToString("dd/MM/yyyy")
+                                            </span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $(".tour-item").each(function () {
+            var giamGia = $(this).find(".promotion-text").text();
+            if (giamGia === "null" || giamGia === "") {
+                $(this).find(".tour-promotion").hide();
+            }
+        });
+    });
+</script>

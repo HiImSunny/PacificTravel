@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Giới Thiệu về PacificTravel";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+
+    ViewBag.active = "About";
+    ViewBag.topBannerUrl = "/Images/about-banner.jpg";
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/user/about.css">
+}
+
+@section OverlayGradientOnBanner {
+    <div class="overlay dark-side-image"></div>
+}
+
+@section TopBannerContent {
+    <div class="container" style="display: flex; justify-content: center;">
+        <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
+            <div class="top-banner-content">
+                <h1>Giới thiệu về <span style="color: #ff6c00">PacificTravel</span></h1>
+            </div>
+        </div>
+     </div>
+}
+
+<section class="ftco-section">
+    <div class="container">
+        <h2>PacificTravel - Đồng hành cùng bạn khám phá thế giới.</h2>
+        <p>Đặt tour du lịch chưa bao giờ dễ dàng đến thế. Với PacificTravel, bạn chỉ cần vài cú click chuột là có thể lên kế hoạch cho một chuyến đi hoàn hảo. Đội ngũ nhân viên chuyên nghiệp của chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7, từ khâu tư vấn đến khi kết thúc hành trình.</p>
+
+        <h2>Tầm nhìn</h2>
+        <p>Trở thành công ty du lịch hàng đầu Việt Nam, mang đến cho khách hàng những trải nghiệm du lịch tuyệt vời nhất. PacificTravel hướng tới mục tiêu trở thành người bạn đồng hành tin cậy của mọi khách hàng, giúp họ khám phá thế giới và tạo ra những kỷ niệm đáng nhớ.</p>
+
+        <h2>Sứ mệnh</h2>
+        <p>Mang đến cho khách hàng những trải nghiệm du lịch trọn vẹn, với giá cả hợp lý và dịch vụ chuyên nghiệp. PacificTravel cam kết cung cấp các sản phẩm du lịch chất lượng cao, đáp ứng mọi nhu cầu của khách hàng. Chúng tôi luôn lắng nghe và thấu hiểu khách hàng để không ngừng cải tiến dịch vụ, mang đến những trải nghiệm tốt nhất.</p>
+
+        <h2>Chiến lược</h2>
+        <p>Phát triển bền vững và đa dạng hóa sản phẩm. PacificTravel sẽ không ngừng mở rộng mạng lưới đối tác, đa dạng hóa sản phẩm du lịch để đáp ứng nhu cầu ngày càng cao của khách hàng. Đồng thời, chúng tôi sẽ tập trung vào việc nâng cao chất lượng dịch vụ, xây dựng một thương hiệu du lịch uy tín và được khách hàng tin yêu.</p>
+    </div>
+</section>
