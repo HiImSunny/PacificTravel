@@ -1,9 +1,13 @@
-﻿
+﻿@model Web_Tour.Models.DAT_TOUR
+
 @{
-    ViewBag.Title = "BookingPassenger";
+    ViewBag.Title = "Đặt Tour Thành Công - " + Model.ID_DAT_TOUR;
     Layout = "~/Views/Shared/LayoutUser.cshtml";
 
     ViewBag.topBannerUrl = "/Images/tour-booking-banner.jpg";
+
+    var ngay = (Model.TOUR.NGAY_VE - Model.TOUR.NGAY_DI).TotalDays;
+    var dem = ngay - 1;
 }
 
 @section Head {
@@ -76,15 +80,10 @@
                     <div class="confirmInfo">
                         <div class="infoTitle">
                             <h2>
-                                <a target="_blank" href="/tour-trong-nuoc/1141/du-lich-my-tho-can-tho-soc-trang-bac-lieu-ca-mau">Du Lịch Mỹ Tho - Cần Thơ - Sóc Trăng - Bạc Liêu - Cà Mau</a>
+                                <a target="_blank" href="@Url.Action("Booking", "Tour", new { id = Model.ID_TOUR})">@Model.TOUR.TEN_TOUR</a>
                             </h2>
                         </div>
-                        <p>
-                            - Khởi hành: thứ 5 hàng tuần
-                            - Đến Mỹ Tho thưởng thức trái cây theo mùa, nghe nhạc tài tử Nam Bộ
-                            - Viếng chùa Som Rông với các công trình độc đáo
-                            - Chụp ảnh lưu niệm với mốc Toạ độ quốc gia - Panô biểu tượng Mũi Cà Mau
-                        </p>
+                        @Html.Raw(@Model.TOUR.MO_TA)
 
                     </div>
                 </div>
@@ -96,58 +95,69 @@
                             <ul class="list-unstyled">
                                 <li>
                                     <i class="fa fa-barcode" aria-hidden="true"></i> Mã tour:
-                                    <span>PT01-17102024</span>
+                                    <span>@Model.ID_DAT_TOUR</span>
                                 </li>
                                 <li>
                                     <i class="fa fa-location-arrow" aria-hidden="true"></i> Điểm đến:
-                                    <span>Miền Tây</span>
+                                    <span>@Model.TOUR.DIA_DIEM_THAM_QUAN</span>
                                 </li>
                                 <li>
                                     <i class="fa fa-user" aria-hidden="true"></i> Tên:
-                                    <span>Lương Khang</span>
+                                    <span>@Model.THANH_VIEN.TEN_THANH_VIEN</span>
                                 </li>
                                 <li>
                                     <i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ:
-                                    <span>ádasd</span>
+                                    <span>@Model.THANH_VIEN.DIA_CHI_THANH_VIEN</span>
                                 </li>
                                 <li>
                                     <i class="fa fa-phone" aria-hidden="true"></i> Số Điện thoại:
-                                    <span>0943505127</span>
+                                    <span>@Model.THANH_VIEN.SDT_THANH_VIEN</span>
                                 </li>
                                 <li>
                                     <i class="fa fa-envelope-o" aria-hidden="true"></i> Email:
-                                    <span>duykhang.sunext@gmail.com</span>
+                                    <span>@Model.THANH_VIEN.EMAIL_THANH_VIEN</span>
                                 </li>
                                 <li>
                                     <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>Ngày đi:
-                                    <span>17-10-2024</span>
+                                    <span>@Model.TOUR.NGAY_DI.ToString("dd/MM/yyyy")</span>
                                 </li>
                                 <li>
                                     <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>Ngày về:
-                                    <span>20-10-2024</span>
+                                    <span>@Model.TOUR.NGAY_VE.ToString("dd/MM/yyyy")</span>
                                 </li>
                                 <li>
                                     <i class="fa fa-calendar" aria-hidden="true"></i>Thời gian:
-                                    <span>4 ngày 3 đêm</span>
+                                    <span>@ngay ngày @dem đêm</span>
                                 </li>
                                 <li>
                                     <i class="fa fa-user-secret" aria-hidden="true"></i>Giá Người lớn
                                     :
-                                    <span><strong>4.879.000</strong></span>
+                                    <span><strong>@String.Format("{0:0,0}", Model.TOUR.GIA_NGUOI_LON)</strong> VNĐ</span>
                                     <span>
-                                        X 1 đ
+                                        X @Model.SO_NGUOI_LON
                                     </span>
                                 </li>
+
+                                @if (Model.SO_TRE_EM != null) {
+                                <li>
+                                    <i class="fa fa-user-secret" aria-hidden="true"></i>Giá Trẻ em
+                                    :
+                                    <span><strong>@String.Format("{0:0,0}", Model.TOUR.GIA_TRE_EM)</strong> VNĐ</span>
+                                    <span>
+                                        X @Model.SO_TRE_EM
+                                    </span>
+                                </li>
+                                }
 
                             </ul>
                             <div class="priceTotal">
                                 <h2>
-                                    Tổng: <span>4.879.000</span>
+                                    Tổng: <span>@String.Format("{0:0,0}", Model.TONG_SO_TIEN)</span>
                                     <span style="font-size: 16px;
                                         color: #000;
                                         font-weight: 500;
                                         line-height: 21px;
-                                        text-transform: lowercase;"> đ</span>
+                                        text-transform: lowercase;"> VNĐ</span>
                                 </h2>
                             </div>
                             <div class="text-center" style="margin-top: 15px">

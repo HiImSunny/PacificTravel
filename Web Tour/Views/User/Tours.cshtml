@@ -132,9 +132,9 @@
                                     <div class="promotion-text">Giảm @String.Format("{0:0,0}", @list.GIAM_GIA) VNĐ/khách</div>
                                 </div>
 
-                                <h4 class="tour-name"><a href="#tour-detail">@list.TEN_TOUR</a></h4>
+                                <h4 class="tour-name"><a href="@Url.Action("Details", "Tour", new { id = list.ID_TOUR})">@list.TEN_TOUR</a></h4>
                                 <p class="tour-destination">
-                                    <a href="#tour-detail">@list.DIA_DIEM_KHOI_HANH - @list.DIA_DIEM_THAM_QUAN</a><br />
+                                    <span style="font-weight: bold">@list.DIA_DIEM_KHOI_HANH - @list.DIA_DIEM_THAM_QUAN</span><br />
 
 
                                     @Truncate(@Html.Action("ConvertHtmlToPlainText", "User", new { html = list.MO_TA }).ToString(), 200)

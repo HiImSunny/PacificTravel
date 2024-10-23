@@ -1,4 +1,5 @@
 ﻿
+
 @{
     ViewBag.Title = "CashPayment";
     Layout = "~/Views/Shared/LayoutUser.cshtml";
@@ -98,7 +99,7 @@
                     <div class="content">Quý khách vui lòng đến văn phòng của Pacifictravel để thanh toán và nhận vé.</div>
                 </div>
 
-                <a href="@Url.Action("BookingWaitingPayment", "Tour")" class="button">Nhấn vào để hoàn thành đặt tour</a>
+                <a href="/Tour/BookingComplete?id=@ViewBag.id" class="button">Nhấn vào để hoàn thành đặt tour</a>
             </div>
         </div>
     </div>

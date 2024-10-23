@@ -35,22 +35,6 @@
       <Association Name="THANH_VIEN_DANH_GIA" Member="THANH_VIEN" ThisKey="ID_THANH_VIEN" OtherKey="ID_THANH_VIEN" Type="THANH_VIEN" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.DAT_TOUR" Member="DAT_TOURs">
-    <Type Name="DAT_TOUR">
-      <Column Name="STT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ID_DAT_TOUR" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="THOI_GIAN_DAT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TONG_SO_TIEN" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Column Name="ID_TOUR" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="ID_THANH_TOAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ID_THANH_VIEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ID_LOAI" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="LOAI_TOUR_DAT_TOUR" Member="LOAI_TOUR" ThisKey="ID_LOAI" OtherKey="ID_LOAI" Type="LOAI_TOUR" IsForeignKey="true" />
-      <Association Name="TOUR_DAT_TOUR" Member="TOUR" ThisKey="ID_TOUR" OtherKey="ID_TOUR" Type="TOUR" IsForeignKey="true" />
-      <Association Name="THANH_TOAN_DAT_TOUR" Member="THANH_TOAN" ThisKey="ID_THANH_TOAN" OtherKey="ID_THANH_TOAN" Type="THANH_TOAN" IsForeignKey="true" />
-      <Association Name="THANH_VIEN_DAT_TOUR" Member="THANH_VIEN" ThisKey="ID_THANH_VIEN" OtherKey="ID_THANH_VIEN" Type="THANH_VIEN" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.HUONGDANVIEN" Member="HUONGDANVIENs">
     <Type Name="HUONGDANVIEN">
       <Column Name="ID_HDV" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -128,6 +112,24 @@
       <Column Name="ID_TRANG_THAI" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TEN_TRANG_THAI" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="TRANG_THAI_TOUR_TOUR" Member="TOURs" ThisKey="ID_TRANG_THAI" OtherKey="ID_TRANG_THAI" Type="TOUR" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DAT_TOUR" Member="DAT_TOURs">
+    <Type Name="DAT_TOUR">
+      <Column Name="STT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_DAT_TOUR" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="THOI_GIAN_DAT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SO_NGUOI_LON" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SO_TRE_EM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TONG_SO_TIEN" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_TOUR" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_THANH_TOAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_THANH_VIEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_LOAI" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TOUR_DAT_TOUR" Member="TOUR" ThisKey="ID_TOUR" OtherKey="ID_TOUR" Type="TOUR" IsForeignKey="true" />
+      <Association Name="THANH_TOAN_DAT_TOUR" Member="THANH_TOAN" ThisKey="ID_THANH_TOAN" OtherKey="ID_THANH_TOAN" Type="THANH_TOAN" IsForeignKey="true" />
+      <Association Name="LOAI_TOUR_DAT_TOUR" Member="LOAI_TOUR" ThisKey="ID_LOAI" OtherKey="ID_LOAI" Type="LOAI_TOUR" IsForeignKey="true" />
+      <Association Name="THANH_VIEN_DAT_TOUR" Member="THANH_VIEN" ThisKey="ID_THANH_VIEN" OtherKey="ID_THANH_VIEN" Type="THANH_VIEN" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

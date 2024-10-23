@@ -126,7 +126,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Content Include="Content\admin\tourtypes.css" />
     <Content Include="Content\admin\deletetour.css" />
-    <Content Include="Content\admin\tourstatuses.css" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\TourController.cs" />
@@ -246,6 +245,8 @@
     <Content Include="Content\flaticon.css" />
     <Content Include="Content\icomoon.css" />
     <Content Include="Content\ionicons.min.css" />
+    <Content Include="Content\jquery.selectBox.css" />
+    <Content Include="Scripts\jquery.selectBox.js" />
     <Content Include="Content\jquery.timepicker.css" />
     <Content Include="Content\magnific-popup.css" />
     <Content Include="Content\tinymce\icons\default\icons.min.js" />
@@ -545,7 +546,7 @@
     <Content Include="Views\Auth\ProfileName.cshtml" />
     <Content Include="Views\Auth\ProfileInfo.cshtml" />
     <Content Include="Views\Tour\Booking.cshtml" />
-    <Content Include="Views\Tour\BookingWaitingPayment.cshtml" />
+    <Content Include="Views\Tour\BookingComplete.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\LayoutAdmin.cshtml" />

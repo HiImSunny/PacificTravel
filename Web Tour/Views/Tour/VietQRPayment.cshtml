@@ -75,9 +75,9 @@
                     </div>
                 </div>
 
-                <img src="https://api.vietqr.io/image/546034-0943505127-dK61dk4.jpg?accountName=LUONG%20DUY%20KHANG&amount=10000&addInfo=PacificTravel" width="500px" />
+                <img src="@Url.Content("https://api.vietqr.io/image/546034-0943505127-dK61dk4.jpg?accountName=LUONG%20DUY%20KHANG&amount=" + ViewBag.amount + "&addInfo=PacificTravel%20" + ViewBag.id)" width="500px" />
 
-                <a href="@Url.Action("BookingWaitingPayment", "Tour")" class="button" style="border: 2px solid #ff6a00; padding: 15px; margin-top: 50px;">Nhấp vào khi bạn đã chuyển khoản xong!</a>
+                <a href="/Tour/BookingComplete?id=@ViewBag.id" class="button" style="border: 2px solid #ff6a00; padding: 15px; margin-top: 50px;">Nhấp vào khi bạn đã chuyển khoản xong!</a>
             </div>
         </div>
     </div>

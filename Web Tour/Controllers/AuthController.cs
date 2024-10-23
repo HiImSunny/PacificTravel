@@ -64,6 +64,12 @@ namespace Web_Tour.Controllers
             }
 
             Session["account-info"] = thanhVien;
+
+            if (Session["redirect-to"] != null)
+            {
+                return Redirect(Session["redirect-to"].ToString());
+            }
+
             return RedirectToAction("Home", "User");
         }
 
@@ -78,6 +84,11 @@ namespace Web_Tour.Controllers
             ViewBag.AccountAddress = ((THANH_VIEN)Session["account-info"]).DIA_CHI_THANH_VIEN == "" ? "\u00A0" : ((THANH_VIEN)Session["account-info"]).DIA_CHI_THANH_VIEN;
 
             return View();
+        }
+
+        public int ProfileID()
+        {
+            return ((THANH_VIEN)Session["account-info"]).ID_THANH_VIEN;
         }
 
         public ActionResult ProfileName() {

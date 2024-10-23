@@ -70,7 +70,7 @@
         margin-top: 15px;
     }
 
-.methods .method {
+.methods .method, .tour-type {
     margin: 50px 0;
 }
 
@@ -98,7 +98,7 @@
         top: 45%;
     }
 
-.method .content {
+.method .content, .tour-type .content {
     font-size: 12px;
     padding: 10px;
     padding: 20px;
@@ -289,7 +289,7 @@
 
 
 body {
-    font-family: 'Montserrat', 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     line-height: 21px;
     color: black;
@@ -5415,6 +5415,10 @@ header {
 }
 
 /*=== 12.3 BOOKING DETAILS ===*/
+.bookDetailsInfo {
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
 @media (max-width: 767px) {
     .bookDetailsInfo {
         margin-bottom: 30px;
@@ -5442,7 +5446,7 @@ header {
         color: #222222;
         margin-bottom: 25px;
         text-transform: capitalize;
-        font-weight: 400;
+        font-weight: 700;
     }
 
     .infoArea .list-unstyled {
@@ -5461,7 +5465,8 @@ header {
             }
 
             .infoArea .list-unstyled li span {
-                color: #969696;
+                color: #000000;
+                font-weight: 600;
             }
 
     .infoArea h2 {
