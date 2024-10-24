@@ -41,7 +41,7 @@
     <div class="container">
         <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
             <div class="top-banner-content">
-                <h1>Đặt ngay tour <br> du lịch tại <span style="color: #ff6c00">PacificTravel</span></h1>
+                <h1>Tìm kiếm <br>"<span style="color: #ff6c00">@ViewBag.searchName</span>"</h1>
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
     <div class="container">
         <div class="search-bar-container">
             <div class="search-bar">
-                <form class="search-options" action="/User/SearchTour" >
+                <form class="search-options" action="/User/SearchTour">
                     <div class="option">
                         <label>TOUR</label>
 
@@ -102,13 +102,13 @@
             </div>
 
             <div class="sort-type">
-                <a class="sort-item @((string.IsNullOrEmpty(Request["sort"]) || Request["sort"] == "latest") ? "active" : "")" href="@Url.Action("Tours", new { sort = "", page = Model.PageNumber })">
+                <a class="sort-item  active" href="#">
                     [ Ngày gần nhất ]
                 </a>
-                <a class="sort-item @(Request["sort"] == "min-price" ? "active" : "")" href="@Url.Action("Tours", new { sort = "min-price", page = Model.PageNumber })">
+                <a class="sort-item " href="#sort=min-price">
                     [ Giá thấp nhất ]
                 </a>
-                <a class="sort-item @(Request["sort"] == "popular" ? "active" : "")" href="@Url.Action("Tours", new { sort = "popular", page = Model.PageNumber })">
+                <a class="sort-item " href="#sort=popular">
                     [ Hấp dẫn nhất ]
                 </a>
             </div>
@@ -135,13 +135,9 @@
                     <div class="tour-info">
                         <div class="tour-details">
                             <div class="tour-content">
-
-                                @if (list.GIAM_GIA != 0)
-                                {
-                                    <div class="tour-promotion">
-                                        <div class="promotion-text">Giảm @String.Format("{0:0,0}", @list.GIAM_GIA) VNĐ/khách</div>
-                                    </div>
-                                }
+                                <div class="tour-promotion">
+                                    <div class="promotion-text">Giảm @String.Format("{0:0,0}", @list.GIAM_GIA) VNĐ/khách</div>
+                                </div>
 
                                 <h4 class="tour-name"><a href="@Url.Action("Details", "Tour", new { id = list.ID_TOUR})">@list.TEN_TOUR</a></h4>
                                 <p class="tour-destination">
@@ -177,7 +173,7 @@
         </div>
         <div class="MenuTrang" style=" text-align: center;">
             Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
-            @Html.PagedListPager(Model, page => Url.Action("/Tours", new { sort = Request["sort"], page = page }))
+            @Html.PagedListPager(Model, page => Url.Action("/Tours", new { page = page }))
 
         </div>
     </div>

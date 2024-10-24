@@ -1,9 +1,122 @@
-﻿@{
+﻿@using Web_Tour.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<THANH_VIEN>
+
+@{
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 
     ViewBag.active = "Users";
 }
 
-<h2>User</h2>
+@section Head {
+
+    <link rel="stylesheet" href="~/Content/PagedList.css">
+}
+
+@section NavBar {
+    <div class="navbar">
+        <h4 style="margin: 0">Danh Sách Thành Viên</h4>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="tour-booked-container">
+
+        <table>
+            <tr>
+                <th style="width:200px"> Mã Thành Viên </th>
+                <th style="width:200px"> Họ Tên </th>
+                <th style="width:150px"> Email </th>
+                <th style="width:150px"> Số Điện Thoại </th>
+                <th style="width:200px"> Địa Chỉ </th>
+                <th style="width:150px"> Ngày Tạo </th>
+                <th style="width:150px"> Có Phải Admin </th>
+                <th style="width:200px"> </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_THANH_VIEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TEN_THANH_VIEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EMAIL_THANH_VIEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SDT_THANH_VIEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIA_CHI_THANH_VIEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAY_TAO)
+                    </td>
+                    <td>
+                       @Html.Action("IsThanhVienAdmin", "Admin", new { idThanhVien = item.ID_THANH_VIEN })
+                    </td>
+
+                    <td class="action">
+                        @if (@Html.Action("IsThanhVienAdmin", "Admin", new { idThanhVien = item.ID_THANH_VIEN }).ToString().ToLower() == "true")
+                        {
+                            <a href="/Admin/ToggleAdmin?idThanhVien=@item.ID_THANH_VIEN" id="detail">Đặt Làm Thành Viên</a>
+                        }
+                        else
+                        {
+
+                            <a href="/Admin/ToggleAdmin?idThanhVien=@item.ID_THANH_VIEN" id="detail">Đặt Làm ADMIN</a>
+
+                        }
+                    </td>
+
+                </tr>
+            }
+        </table>
+
+
+        <div class="MenuTrang" style=" text-align: center;">
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("/Users", new { page = page }))
+
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .tour-booked-container {
+        border-radius: 0.375rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        background-color: white;
+    }
+
+    table th {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    table td {
+        padding: 0.75rem;
+        vertical-align: top;
+    }
+
+    .action {
+        align-content: center;
+    }
+
+        .action #set-admin {
+            padding: 8px;
+            background-color: #ff6a00;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
+</style>
 

@@ -92,99 +92,22 @@
                         <span class="menu-header-text">Chức Năng Chính</span>
                     </li>
 
-
                     @if (ViewBag.group == "Tours")
                     {
-                        <li class="menu-item active open">
-                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <li class="menu-item active">
+                            <a href="/Admin/Tours" class="menu-link">
                                 <i class="menu-icon tf-icons bx bxs-plane-alt"></i>
                                 <div class="text-truncate" data-i18n="Tours">Tours</div>
                             </a>
-
-                            <ul class="menu-sub">
-
-                                @if (ViewBag.active == "Tours")
-                                {
-                                    <li class="menu-item active">
-                                        <a href="/Admin/Tours" class="menu-link">
-                                            <div class="text-truncate" data-i18n="New Article">Danh sách</div>
-                                        </a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="menu-item">
-                                        <a href="/Admin/Tours" class="menu-link">
-                                            <div class="text-truncate" data-i18n="New Article">Danh sách</div>
-                                        </a>
-                                    </li>
-                                }
-
-                                @if (ViewBag.active == "TourTypes")
-                                {
-                                    <li class="menu-item active">
-                                        <a href="/Admin/TourTypes" class="menu-link">
-                                            <div class="text-truncate" data-i18n="List Article">Danh Sách Loại</div>
-                                        </a>
-                                    </li>
-
-                                }
-                                else
-                                {
-                                    <li class="menu-item">
-                                        <a href="/Admin/TourTypes" class="menu-link">
-                                            <div class="text-truncate" data-i18n="List Article">Danh Sách Loại</div>
-                                        </a>
-                                    </li>
-                                }
-                            </ul>
                         </li>
                     }
                     else
                     {
                         <li class="menu-item">
-                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <a href="/Admin/Tours" class="menu-link">
                                 <i class="menu-icon tf-icons bx bxs-plane-alt"></i>
                                 <div class="text-truncate" data-i18n="Tours">Tours</div>
                             </a>
-
-                            <ul class="menu-sub">
-
-                                @if (ViewBag.active == "Tours")
-                                {
-                                    <li class="menu-item active">
-                                        <a href="/Admin/Tours" class="menu-link">
-                                            <div class="text-truncate" data-i18n="New Article">Danh sách</div>
-                                        </a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="menu-item">
-                                        <a href="/Admin/Tours" class="menu-link">
-                                            <div class="text-truncate" data-i18n="New Article">Danh sách</div>
-                                        </a>
-                                    </li>
-                                }
-
-                                @if (ViewBag.active == "TourTypes")
-                                {
-                                    <li class="menu-item active">
-                                        <a href="/Admin/TourTypes" class="menu-link">
-                                            <div class="text-truncate" data-i18n="List Article">Danh Sách Loại</div>
-                                        </a>
-                                    </li>
-
-                                }
-                                else
-                                {
-                                    <li class="menu-item">
-                                        <a href="/Admin/TourTypes" class="menu-link">
-                                            <div class="text-truncate" data-i18n="List Article">Danh Sách Loại</div>
-                                        </a>
-                                    </li>
-                                }
-                            </ul>
                         </li>
                     }
 
@@ -222,27 +145,6 @@
                             <a href="/Admin/News" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-news"></i>
                                 <div class="text-truncate" data-i18n="News">Bài Viết</div>
-                            </a>
-                        </li>
-                    }
-
-
-
-                    @if (ViewBag.active == "Location")
-                    {
-                        <li class="menu-item active">
-                            <a href="/Admin/Location" class="menu-link">
-                                <i class="menu-icon tf-icons bx bx-map"></i>
-                                <div class="text-truncate" data-i18n="Location">Địa Điểm</div>
-                            </a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="menu-item">
-                            <a href="/Admin/Location" class="menu-link">
-                                <i class="menu-icon tf-icons bx bx-map"></i>
-                                <div class="text-truncate" data-i18n="Location">Địa Điểm</div>
                             </a>
                         </li>
                     }
@@ -327,14 +229,14 @@
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                         <!-- Search -->
                         @*<div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search bx-md"></i>
-                                <input type="text"
-                                       class="form-control border-0 shadow-none ps-1 ps-sm-2"
-                                       placeholder="Search..."
-                                       aria-label="Search..." />
-                            </div>
-                        </div>*@
+                                <div class="nav-item d-flex align-items-center">
+                                    <i class="bx bx-search bx-md"></i>
+                                    <input type="text"
+                                           class="form-control border-0 shadow-none ps-1 ps-sm-2"
+                                           placeholder="Search..."
+                                           aria-label="Search..." />
+                                </div>
+                            </div>*@
                         <!-- /Search -->
 
                         @RenderSection("NavBar", false)
@@ -375,7 +277,6 @@
                 </nav>
 
                 <!-- / Navbar -->
-
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
 
@@ -395,6 +296,9 @@
     <!-- / Layout wrapper -->
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
 
     <script src="~/Content/assets/vendor/libs/jquery/jquery.js"></script>
     <script src="~/Content/assets/vendor/libs/popper/popper.js"></script>

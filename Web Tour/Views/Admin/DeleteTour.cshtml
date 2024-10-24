@@ -1,0 +1,80 @@
+﻿@model Web_Tour.Models.TOUR
+
+@{
+    ViewBag.Title = "DeleteTour";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+
+    ViewBag.group = "Tours";
+}
+
+@section Head {
+    <link href="~/Content/admin/newtour.css" rel="stylesheet" />
+}
+
+@section NavBar {
+    <div class="navbar">
+        <h4>Xóa Tour - @Model.ID_TOUR</h4>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="tour-details-container">
+
+        <div class="row">
+            <div class="col-6">
+                <img src="@Url.Content("~/Images/tour/" + Model.ANH_BIA_TOUR)" width="100%" />
+            </div>
+            <div class="col-6">
+                <p>MÃ TOUR: <span>@Model.ID_TOUR</span></p>
+                <p>TÊN TOUR: <span>@Model.TEN_TOUR</span></p>
+                <p>TRẠNG THÁI TOUR: <span>@Model.TRANG_THAI_TOUR.TEN_TRANG_THAI</span></p>
+                <p>NGÀY ĐI: <span>@Model.NGAY_DI.ToString("dd/MM/yyyy")</span></p>
+                <p>NGÀY VỀ: <span>@Model.NGAY_VE.ToString("dd/MM/yyyy")</span></p>
+                <p>ĐỊA ĐIỂM KHỞI HÀNH: <span>@Model.DIA_DIEM_KHOI_HANH</span></p>
+                <p>ĐỊA ĐIỂM THAM QUAN: <span>@Model.DIA_DIEM_THAM_QUAN</span></p>
+                <p>HÌNH THỨC DI CHUYỂN: <span>@Model.HINH_THUC_DI_CHUYEN</span></p>
+                <p>HƯỚNG DẪN VIÊN: <span>@Model.HUONGDANVIEN.HO_TEN_HDV</span></p>
+                <p>GIẢM GIÁ: <span>@String.Format("{0:0,0}", @Model.GIAM_GIA) VNĐ</span></p>
+                <p>GIÁ NGƯỜI LỚN: <span>@String.Format("{0:0,0}", @Model.GIA_NGUOI_LON) VNĐ</span></p>
+                <p>GIÁ TRẺ EM: <span>@String.Format("{0:0,0}", @Model.GIA_TRE_EM) VNĐ</span></p>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px">
+            @Html.Raw(Model.MO_TA)
+        </div>
+
+
+    </div>
+
+
+    <div class="button-wrapper">
+        <a class="back-to-tours" href="/Admin/Tours">Trở Về</a>
+        <a class="delete-tours" href="@Url.Content("/Admin/ConfirmDeleteTour?id=" + Model.ID_TOUR)">Xác Nhận Xóa Tour</a>
+    </div>
+</div>
+
+<style>
+    .tour-details-container {
+        background-color: white;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+        .tour-details-container ul {
+            appearance: none;
+        }
+
+    .col-6 {
+        font-size: 20px;
+    }
+
+        .col-6 p {
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .col-6 span {
+            font-weight: bold;
+        }
+</style>

@@ -31,13 +31,13 @@
     <div class="container">
         <div class="search-bar-container">
             <div class="search-bar">
-                <div class="search-options">
+                <form class="search-options" action="/User/SearchTour">
                     <div class="option">
                         <label>TOUR</label>
 
                         <div class="tour-container">
                             <i class="fa-solid fa-magnifying-glass" style="color: #a9a9a9;"></i>
-                            <input type="text" placeholder="Du lịch Hà Nội - Yên Tử">
+                            <input name="searchname" type="text" placeholder="Du lịch Hà Nội - Yên Tử">
                         </div>
                     </div>
                     <div class="option">
@@ -55,7 +55,7 @@
                             <input class="input-date" type="date" placeholder="Ngày Trở Về">
                         </div>
                     </div>
-                    <div class="option">
+                    <div class="option" style="border: none">
                         <label>KHOẢNG GIÁ</label>
 
                         <div class="select-container">
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <button class="search-button">TÌM KIẾM</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>

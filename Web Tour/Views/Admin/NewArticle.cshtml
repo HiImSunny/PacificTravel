@@ -1,0 +1,72 @@
+﻿@model Web_Tour.Models.BAI_VIET
+
+@{
+    ViewBag.Title = "NewArticle";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+
+    ViewBag.active = "News";
+}
+
+@section Head {
+    <link href="~/Content/admin/newtour.css" rel="stylesheet" />
+}
+
+@section NavBar {
+    <div class="navbar">
+        <h4>Tạo Bài Viết Mới</h4>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="new-tour-container">
+
+        <div>
+            <form action="/Admin/NewArticle?idThanhVien=@Html.Action("ProfileID", "Auth")" method="post" enctype="multipart/form-data">
+
+                <div class="form-section">
+
+                    <div class="row tour-info col-lg-8 mx-auto">
+                        <h5 style="margin: 0">1. Thông Tin Cơ Bản</h5>
+
+                        <div class="row">
+
+                            <div class="form-item col-md-12">
+                                <label for="tieu-de" class="input-label">Tiêu Đề <span style="color: red">(*)</span></label>
+                                <input type="text" required class="input" id="tieu-de" placeholder=" " name="tieu-de">
+                            </div>
+
+                            <div class="form-item col-md-12" id="text-area">
+                                <label for="noidung" class="input-label">Nội Dung Bài Viết <span style="color: red">(*)</span></label>
+                                <textarea name="noidung" id="noidung">Nhập Nội Dung Bài Viết</textarea>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-section tour-img">
+                    <div class="row tour-info col-lg-8 mx-auto">
+                        <h5 style="margin: 0">2. Ảnh bìa bài viêt</h5>
+
+                        <div class="row">
+
+                            <div class="form-item col-md-12">
+                                <label for="anhbiabaiviet" class="input-label">Đặt ảnh bìa bài viết <span style="color: red">(*)</span></label>
+                                <input type="file" name="anhbiabaiviet" id="anhbiabaiviet" value="" class="input" required />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-wrapper">
+                    <a class="back-to-tours" href="/Admin/News">Trở Về</a>
+                    <button class="create-tour-button" type="submit">Tạo Mới</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>

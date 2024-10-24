@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using PagedList;
 using Web_Tour.Models;
 
 namespace Web_Tour.Controllers
@@ -11,7 +12,7 @@ namespace Web_Tour.Controllers
         databaseDataContext data = new databaseDataContext("");
 
         public Boolean IsAuthenticated() {
-            return Session["account-info"] != null || Session["account-info"].ToString() != "";
+            return Session["account-info"] != null;
     
         }
 
@@ -73,17 +74,24 @@ namespace Web_Tour.Controllers
             return RedirectToAction("Home", "User");
         }
 
-        public ActionResult ProfileInfo()
+        public ActionResult ProfileInfo(int? page)
         {
             if (!IsAuthenticated())
-                return RedirectToAction("Login", "User");
+                return RedirectToAction("Login", "Auth");
+
+            var idUser = ((THANH_VIEN)Session["account-info"]).ID_THANH_VIEN;
 
             ViewBag.AccountName = ((THANH_VIEN)Session["account-info"]).TEN_THANH_VIEN;
             ViewBag.AccountEmail = ((THANH_VIEN)Session["account-info"]).EMAIL_THANH_VIEN;
             ViewBag.AccountPhone = ((THANH_VIEN)Session["account-info"]).SDT_THANH_VIEN == "" ? "\u00A0" : ((THANH_VIEN)Session["account-info"]).SDT_THANH_VIEN;
             ViewBag.AccountAddress = ((THANH_VIEN)Session["account-info"]).DIA_CHI_THANH_VIEN == "" ? "\u00A0" : ((THANH_VIEN)Session["account-info"]).DIA_CHI_THANH_VIEN;
 
-            return View();
+            int pageNumber = (page ?? 1);
+            int pageSize = 5;
+
+            var datTour = data.DAT_TOURs.Where(i => i.ID_THANH_VIEN == idUser).ToList().OrderByDescending(i => i.THOI_GIAN_DAT).ToPagedList(pageNumber, pageSize);
+
+            return View(datTour);
         }
 
         public int ProfileID()

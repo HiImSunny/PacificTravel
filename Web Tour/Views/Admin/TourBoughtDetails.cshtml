@@ -1,0 +1,156 @@
+﻿@model Web_Tour.Models.DAT_TOUR
+
+@{
+    ViewBag.Title = "TourBoughtDetails";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+
+    var ngay = (Model.TOUR.NGAY_VE - Model.TOUR.NGAY_DI).TotalDays;
+    var dem = ngay - 1;
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/tour/booking.css">
+}
+
+@section NavBar {
+    <div class="navbar">
+        <h4 style="margin: 0">Chi Tiết Đặt Tour - @Model.ID_DAT_TOUR</h4>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="tour-booked-container">
+
+        <div class="row">
+            <div class="col-md-8 col-sm-7 col-xs-12">
+                <div class="infoTitle">
+                    <h2>Thông tin đặt chỗ</h2>
+                </div>
+                <div class="confirmDetilas">
+                    <div class="image-box-relative image-box-3x2">
+                        <img src="@Url.Content("~/Images/tour/" + Model.TOUR.ANH_BIA_TOUR)">
+                    </div>
+                    <div class="confirmInfo">
+                        <div class="infoTitle">
+                            <h2>
+                                <a target="_blank" href="@Url.Action("Booking", "Tour", new { id = Model.ID_TOUR})">@Model.TOUR.TEN_TOUR</a>
+                            </h2>
+                        </div>
+                        @Html.Raw(@Model.TOUR.MO_TA)
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-5 col-xs-12">
+                <aside>
+                    <div class="bookDetailsInfo" style="margin-top: 47px">
+                        <div class="infoArea">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <i class="fa fa-barcode" aria-hidden="true"></i> Mã tour:
+                                    <span>@Model.ID_DAT_TOUR</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-location-arrow" aria-hidden="true"></i> Điểm đến:
+                                    <span>@Model.TOUR.DIA_DIEM_THAM_QUAN</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-user" aria-hidden="true"></i> Tên:
+                                    <span>@Model.THANH_VIEN.TEN_THANH_VIEN</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ:
+                                    <span>@Model.THANH_VIEN.DIA_CHI_THANH_VIEN</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone" aria-hidden="true"></i> Số Điện thoại:
+                                    <span>@Model.THANH_VIEN.SDT_THANH_VIEN</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i> Email:
+                                    <span>@Model.THANH_VIEN.EMAIL_THANH_VIEN</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>Ngày đi:
+                                    <span>@Model.TOUR.NGAY_DI.ToString("dd/MM/yyyy")</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>Ngày về:
+                                    <span>@Model.TOUR.NGAY_VE.ToString("dd/MM/yyyy")</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>Thời gian:
+                                    <span>@ngay ngày @dem đêm</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-user-secret" aria-hidden="true"></i>Giá Người lớn
+                                    :
+                                    <span><strong>@String.Format("{0:0,0}", Model.TOUR.GIA_NGUOI_LON)</strong> VNĐ</span>
+                                    <span>
+                                        X @Model.SO_NGUOI_LON
+                                    </span>
+                                </li>
+
+                                @if (Model.SO_TRE_EM != null)
+                                {
+                                    <li>
+                                        <i class="fa fa-user-secret" aria-hidden="true"></i>Giá Trẻ em
+                                        :
+                                        <span><strong>@String.Format("{0:0,0}", Model.TOUR.GIA_TRE_EM)</strong> VNĐ</span>
+                                        <span>
+                                            X @Model.SO_TRE_EM
+                                        </span>
+                                    </li>
+                                }
+
+                            </ul>
+                            <div class="priceTotal">
+                                <h2>
+                                    Tổng: <span>@String.Format("{0:0,0}", Model.TONG_SO_TIEN)</span>
+                                    <span style="font-size: 16px;
+                                color: #000;
+                                font-weight: 500;
+                                line-height: 21px;
+                                text-transform: lowercase;"> VNĐ</span>
+                                </h2>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div style="margin-top: 50px; text-align: -webkit-center;">
+                        <a href="/Admin/TourBoughtList" class="text-center back-to-tours">
+                            Trở Về
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    .back-to-tours {
+        display: block;
+        width: 200px;
+        padding: 20px;
+        background-color: #a1a1a1;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+    }
+
+        .back-to-tours:hover {
+            color: #a1a1a1;
+            background-color: white;
+        }
+
+
+</style>
+
+

@@ -22,6 +22,17 @@ ul {
     display: flex;
 }
 
+    .profile-container  .logout-button {
+        display: block;
+        padding: 15px;
+        background-color: red;
+        width: 250px;
+        height: 60px;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+    }
+
 .profile-container .admin-button {
     display: block;
     padding: 15px;

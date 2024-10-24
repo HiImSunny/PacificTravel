@@ -1,0 +1,36 @@
+﻿@model Web_Tour.Models.BAI_VIET
+
+@{
+    ViewBag.Title = Model.TIEU_DE;
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+}
+
+<section class="ftco-section" style="padding-top: 10em">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="list-tour-detail" style="border: 1px solid #ff6a00; margin: 30px 0; padding: 15px">
+                <div class="row ">
+                    <div class="date">
+                        <i class="fa-regular fa-calendar"></i>
+                        @Model.THOI_GIAN_TAO
+                    </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="commonInfo">
+                    @Html.Raw(Model.NOI_DUNG)
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+    </div>
+</section>
+

@@ -1,0 +1,62 @@
+﻿@model Web_Tour.Models.DAT_TOUR
+
+@{
+    ViewBag.Title = "Hủy Đặt Tour - " + Model.ID_DAT_TOUR;
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+
+    ViewBag.topBannerUrl = "/Images/tour-booking-banner.jpg";
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/tour/booking.css">
+}
+
+<style>
+    .slider-text {
+        width: 70%;
+    }
+</style>
+
+@section OverlayGradientOnBanner {
+    <div class="overlay dark-side-image"></div>
+}
+
+@section TopBannerContent {
+    <div class="container" style="display: flex; justify-content: center;">
+        <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
+            <div class="top-banner-content">
+                <h1>Hủy Đặt Tour</h1>
+            </div>
+        </div>
+    </div>
+}
+
+<section class="ftco-section">
+    <div class="container">
+
+        @Html.Action("BookedDetails", "Tour")
+
+        <div style="margin-top: 50px; text-align: center">
+            <a href="@Url.Content("/Tour/ConfirmCancelBookedTour?id=" + Model.ID_DAT_TOUR)" class="text-center cancel-tour-button">
+                Nhấn Vào Đây Để Hủy Đặt Tour!
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .cancel-tour-button {
+        padding: 20px 200px;
+        border: 2px solid #ff1e00;
+        color: #ff1e00;
+        background-color: white;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+        .cancel-tour-button:hover {
+            color: white;
+            background-color: #ff0500;
+        }
+</style>
+

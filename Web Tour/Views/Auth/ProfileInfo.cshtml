@@ -1,13 +1,18 @@
-﻿
+﻿@using Web_Tour.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<DAT_TOUR>
+
 @{
-    ViewBag.Title = "ProfileInfo";
+    ViewBag.Title = "Hồ sơ của tôi - PacificTravel";
     Layout = "~/Views/Shared/LayoutUser.cshtml";
 
     ViewBag.topBannerUrl = "/Images/profile-info-banner.jpg";
+
 }
 
 @section Head {
     <link rel="stylesheet" href="~/Content/auth/profile-info.css">
+    <link rel="stylesheet" href="~/Content/PagedList.css">
 }
 
 @section OverlayGradientOnBanner {
@@ -51,34 +56,80 @@
                     </li>
                 </ul>
 
-            @if (@Html.Action("IsAdmin", "Admin").ToString() == "True")
-            {
                 <div class="button-container">
-                    <a href="Admin" class="admin-button">Chuyển tới trang Quản Lý</a>
+                    <a href="/Auth/Logout" class="logout-button">Đăng Xuất</a>
                 </div>
-            }
+
+                @if (@Html.Action("IsAdmin", "Admin").ToString() == "True")
+                {
+                    <div class="button-container">
+                        <a href="Admin" class="admin-button">Chuyển tới trang Quản Lý</a>
+                    </div>
+                }
 
             </div>
 
             <div class="tour-bought-list">
                 <h2>Các Tour Đã Đặt</h2>
 
-                <div class="columns">
-                    <div class="column-item">
-                        <span>Mã Đặt Chỗ</span>
-                    </div>
-                    <div class="column-item">
-                        <span>Ngày Đặt</span>
-                    </div>
-                    <div class="column-item">
-                        <span>Tổng Số Chỗ</span>
-                    </div>
-                    <div class="column-item">
-                        <span>Tổng Tiền</span>
-                    </div>
-                    <div class="column-item">
-                        <span>Trạng Thái Thanh Toán</span>
-                    </div>
+                <table class="table">
+                    <tr>
+                        <th style="width:200px"> Mã Đặt Chỗ </th>
+                        <th style="width:100px"> Ngày Đặt </th>
+                        <th style="width:100px"> Tổng Số Chỗ </th>
+                        <th style="width:120px"> Tổng Tiền </th>
+                        <th style="width:150px"> Trạng Thái Thanh Toán </th>
+                        <th style="width:150px"> Trạng Thái Tour </th>
+                        <th style="width:200px"> </th>
+                    </tr>
+
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="@(item.HUY_DAT_TOUR ? "cancel-tour" : "")">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ID_DAT_TOUR)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.THOI_GIAN_DAT)
+                            </td>
+                            <td>
+                                @(item.SO_NGUOI_LON + item.SO_TRE_EM)
+                            </td>
+                            <td>
+                                @String.Format("{0:0,0}", item.TONG_SO_TIEN) VNĐ
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.THANH_TOAN.TRANG_THAI_THANH_TOAN.TEN_TRANG_THAI)
+                            </td>
+                            <td>
+                                @(item.TOUR.TRANG_THAI_TOUR.ID_TRANG_THAI == 1 ? "Chờ Bắt Đầu" : Html.DisplayFor(modelItem => item.TOUR.TRANG_THAI_TOUR.TEN_TRANG_THAI).ToHtmlString())
+                            </td>
+
+                            <td class="action">
+                                @if (item.HUY_DAT_TOUR)
+                                {
+                                    <p style="color: white; font-weight: bold">Tour Đã Hủy</p>
+                                }
+                                else
+                                {
+
+                                    <a href="/Tour/BookedDetailsPage?id=@item.ID_DAT_TOUR" id="detail">Chi Tiết</a>
+                                    <a href="/Tour/CancelBookedTour?id=@item.ID_DAT_TOUR" id="cancel">Hủy Tour</a>
+
+                                }
+                            </td>
+
+                        </tr>
+                    }
+
+                </table>
+
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+                <div class="MenuTrang">
+
+                    @Html.PagedListPager(Model, page => Url.Action("/ProfileInfo", new { page = page }))
+
                 </div>
             </div>
 
@@ -86,5 +137,50 @@
 
     </div>
 </section>
+
+<style>
+    .cancel-tour {
+        background-color: red;
+    }
+
+    .cancel-tour td {
+        color: white;
+    }
+
+    .action {
+        align-content: center;
+    }
+
+        .action #detail {
+            padding: 8px;
+            background-color: #007aff;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .action #cancel {
+            padding: 8px;
+            background-color: #ff0300;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+</style>
+
+<script>
+    window.addEventListener("beforeunload", function () {
+        sessionStorage.setItem("scrollPosition", window.scrollY);
+    });
+
+    window.addEventListener('load', function () {
+        const scrollPosition = sessionStorage.getItem('scrollPosition');
+        if (scrollPosition !== null) {
+            window.scrollTo(0, scrollPosition);
+            sessionStorage.removeItem('scrollPosition');  // Reset after using
+        }
+    });
+</script>
 
 

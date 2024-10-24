@@ -1,0 +1,95 @@
+﻿@model Web_Tour.Models.DANH_GIA
+
+@{
+    ViewBag.Title = "RateDetails";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/tour/booking.css">
+}
+
+@section NavBar {
+    <div class="navbar">
+        <h4 style="margin: 0">Chi Tiết Đánh Giá</h4>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="rate-container">
+
+        @for (int i = 1; i <= Model.SO_LUONG_SAO; i++)
+        {
+            <strong>⭐</strong>
+        }
+        (@Model.SO_LUONG_SAO/5)
+
+        <ul class="list-unstyled">
+            <li>
+                Mã Đánh Giá:
+                <span>@Model.ID_DANH_GIA</span>
+            </li>
+            <li>
+                Mã Tour:
+                <span>@Model.ID_TOUR</span>
+            </li>
+            <li>
+                Tên Tour:
+                <span>@Model.TOUR.TEN_TOUR</span>
+            </li>
+            <li>
+                Mã Thành Viên:
+                <span>@Model.ID_THANH_VIEN</span>
+            </li>
+            <li>
+                Tên Thành Viên:
+                <span>@Model.THANH_VIEN.TEN_THANH_VIEN</span>
+            </li>
+
+        </ul>
+
+        <span>Nội Dung Đánh Giá:</span>
+        <span>@Html.Raw(Model.NOI_DUNG_DANH_GIA)</span>
+
+        <div style="margin-top: 50px; text-align: -webkit-center;">
+            <a href="/Admin/RateList" class="text-center back-to-tours">
+                Trở Về
+            </a>
+        </div>
+
+
+    </div>
+
+</div>
+
+<style>
+
+    .rate-container {
+        border-radius: 0.375rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        background-color: white;
+    }
+
+    .back-to-tours {
+        display: block;
+        width: 200px;
+        padding: 20px;
+        background-color: #a1a1a1;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+    }
+
+        .back-to-tours:hover {
+            color: #a1a1a1;
+            background-color: white;
+        }
+
+        li span {
+            font-weight: 600;
+        }
+</style>
+
+

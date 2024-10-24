@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Web_Tour.Models.TOUR>
+﻿@using Web_Tour.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<TOUR>
 
 @{
     ViewBag.Title = "Tours";
@@ -10,6 +12,7 @@
 
 @section Head {
     <link href="~/Content/admin/tours.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/PagedList.css">
 }
 
 @section NavBar {
@@ -51,17 +54,17 @@
 
                         <div class="row-gap-1" style=" display: flex; flex-wrap: wrap; flex-direction: column; ">
                             <div class="row" style="justify-content: space-between;">
-                                <a class="action-item edit col-6" href="#Edit">
+                                <a class="action-item edit col-6" href="@Url.Content("/Admin/EditTour?id=" + list.ID_TOUR)">
                                     <span>Sửa</span>
                                 </a>
 
-                                <a class="action-item details col-6" href="#Details">
+                                <a class="action-item details col-6" href="@Url.Content("/Admin/TourDetails?id=" + list.ID_TOUR)">
                                     <span>Chi Tiết</span>
                                 </a>
                             </div>
 
                             <div class="row">
-                                <a class="action-item delete col-12" href="#Delete">
+                                <a class="action-item delete col-12" href="@Url.Content("/Admin/DeleteTour?id=" + list.ID_TOUR)">
                                     <span>Xóa</span>
                                 </a>
                             </div>
@@ -73,6 +76,12 @@
             </div>
         }
 
+        
+    <div class="MenuTrang" style=" text-align: center;">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("/Tours", new { page = page }))
+
+    </div>
     </div>
 
 </div>

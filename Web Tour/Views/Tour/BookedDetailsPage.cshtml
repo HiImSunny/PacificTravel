@@ -1,0 +1,41 @@
+﻿@model Web_Tour.Models.DAT_TOUR
+
+@{
+    ViewBag.Title = "Thông Tin Đặt Tour - " + Model.ID_DAT_TOUR;
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+
+    ViewBag.topBannerUrl = "/Images/tour-booking-banner.jpg";
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/tour/booking.css">
+}
+
+<style>
+    .slider-text {
+        width: 70%;
+    }
+</style>
+
+@section OverlayGradientOnBanner {
+    <div class="overlay dark-side-image"></div>
+}
+
+@section TopBannerContent {
+    <div class="container" style="display: flex; justify-content: center;">
+        <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
+            <div class="top-banner-content">
+                <h1>Thông Tin Đặt Tour</h1>
+            </div>
+        </div>
+    </div>
+}
+
+<section class="ftco-section">
+    <div class="container">
+
+        @Html.Action("BookedDetails", "Tour")
+
+    </div>
+</section>
+

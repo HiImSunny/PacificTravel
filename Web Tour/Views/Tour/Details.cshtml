@@ -1,14 +1,30 @@
-﻿@model Web_Tour.Models.TOUR
+﻿@model Web_Tour.Controllers.TourController.TourDetailsViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết tour - " + Model.Tour.TEN_TOUR;
     Layout = "~/Views/Shared/LayoutUser.cshtml";
 
-    ViewBag.topBannerUrl = "/Images/tour/" + Model.ANH_BIA_TOUR;
+    ViewBag.topBannerUrl = "/Images/tour/" + Model.Tour.ANH_BIA_TOUR;
 }
 
 @section Head {
     <link rel="stylesheet" href="~/Content/tour/details.css">
+
+    <script>
+        tinymce.init({
+            selector: "#noidung",
+            setup: function (editor) {
+                var max = 20;
+                editor.on('submit', function (event) {
+                    var numChars = tinymce.activeEditor.plugins.wordcount.body.getCharacterCount();
+                    if (numChars > max) {
+                        alert("Maximum " + max + " characters allowed.");
+                        event.preventDefault();
+                        return false;
+                    }
+                });
+    </script>
+
 }
 
 @section OverlayGradientOnBanner {
@@ -19,7 +35,7 @@
     <div class="container">
         <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
             <div class="top-banner-content">
-                <h1>@Model.TEN_TOUR</h1>
+                <h1>@Model.Tour.TEN_TOUR</h1>
             </div>
         </div>
     </div>
@@ -36,23 +52,23 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <span class="text-uppercase">Thời gian:</span>
-                                <span class="text-strong">4 ngày 3 đêm</span>
+                                <strong class="text-strong">4 ngày 3 đêm</strong>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <span class="text-uppercase">Phương tiện:</span>
-                                <span class="text-strong">
-                                    @Model.HINH_THUC_DI_CHUYEN
-                                </span>
+                                <strong class="text-strong">
+                                    @Model.Tour.HINH_THUC_DI_CHUYEN
+                                </strong>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <span class="text-uppercase">Điểm xuất phát:</span>
-                                <span class="text-strong">@Model.DIA_DIEM_KHOI_HANH</span>
+                                <strong class="text-strong">@Model.Tour.DIA_DIEM_KHOI_HANH</strong>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <span class="text-uppercase">Điểm đến:</span>
-                                <span class="text-strong">@Model.DIA_DIEM_THAM_QUAN</span>
+                                <strong class="text-strong">@Model.Tour.DIA_DIEM_THAM_QUAN</strong>
                             </div>
                         </div>
                     </div>
@@ -83,20 +99,20 @@
                             <div class="list-inline">
                                 <div class="row">
                                     <div class="col-md-2 col-sm-3 col-xs-12">
-                                        <strong>@Model.NGAY_DI.ToString("dd/MM/yyyy")</strong>
+                                        <strong>@Model.Tour.NGAY_DI.ToString("dd/MM/yyyy")</strong>
                                     </div>
                                     <div class="col-md-2 col-sm-3 col-xs-12">
-                                        <strong style="margin-left: -30px;">@Model.ID_TOUR</strong>
+                                        <strong style="margin-left: -30px;">@Model.Tour.ID_TOUR</strong>
                                     </div>
                                     <div class="col-md-2 col-sm-2 col-xs-12 price">
-                                        <strong>@String.Format("{0:0,0}", Model.GIA_NGUOI_LON) VNĐ</strong>
+                                        <strong>@String.Format("{0:0,0}", Model.Tour.GIA_NGUOI_LON) VNĐ</strong>
                                     </div>
                                     <div class="col-md-2 col-sm-2 col-xs-12 price">
-                                        <strong>@String.Format("{0:0,0}", Model.GIA_TRE_EM) VNĐ</strong>
+                                        <strong>@String.Format("{0:0,0}", Model.Tour.GIA_TRE_EM) VNĐ</strong>
                                     </div>
                                     <div class="col-md-2 col-sm-12 col-xs-12 packageInfo">
                                         <div class="action-book">
-                                            <a class="btn btn-book-tour book-tour" href="@Url.Action("Booking", "Tour", new { id = Model.ID_TOUR})">
+                                            <a class="btn btn-book-tour book-tour" href="@Url.Action("Booking", "Tour", new { id = Model.Tour.ID_TOUR})">
                                                 Đặt tour
                                             </a>
                                         </div>
@@ -110,7 +126,7 @@
 
                 <div class="col-xs-12">
                     <div class="commonInfo">
-                        @Html.Raw(@Model.MO_TA)
+                        @Html.Raw(Model.Tour.MO_TA)
                     </div>
                 </div>
             </div>
@@ -171,4 +187,70 @@
 
     </div>
 </section>
+
+<section class="ftco-section">
+    <div class="container">
+        <h3>Đánh Giá Tour</h3>
+
+        @if (Html.Action("IsAuthenticated", "Auth").ToString().ToLower() == "true")
+        {
+            <!-- Evaluation Form -->
+            <form action="@Url.Action("RateTour", "Tour")" method="post">
+                <input type="hidden" name="ID_TOUR" value="@Model.Tour.ID_TOUR" />
+                <input type="hidden" name="ID_THANH_VIEN" value="@Html.Action("ProfileID", "Auth")" /> <!-- Assuming you have the member ID in session -->
+
+                <div class="form-group">
+                    <label for="rating">Đánh giá của bạn:</label>
+                    <div id="rating">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <input type="radio" name="SoLuongSao" value="@i" id="star@i" required />
+                            <label for="star@i">@i ⭐</label>
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="noidung">Nội dung đánh giá:</label>
+                    <textarea maxlength="495" name="NoiDungDanhGia" id="noidung" class="form-control" rows="4" placeholder="Nhập nội dung đánh giá"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Gửi Đánh Giá</button>
+            </form>
+        }
+        else
+        {
+            <p>Hãy đăng nhập để đánh giá tour!</p>
+        }
+
+
+
+        <h3 style="margin-top: 50px">Đánh Giá Trước Đây</h3>
+        <div id="previous-reviews">
+            @if (Model.Ratings.Any())
+            {
+                <div class="row">
+                    @foreach (var rating in Model.Ratings)
+                    {
+
+                    <div class="col-3" style="box-shadow: 0 0.5rem 0.5rem 0 rgba(34, 48, 62, 0.08); border-radius: 5px; padding: 10px; width: 300px; margin-left: 40px ">
+                        @for (int i = 1; i <= @rating.SO_LUONG_SAO; i++)
+                        {
+                            <strong>⭐</strong>
+                        }
+                        <p>@Html.Raw(@rating.NOI_DUNG_DANH_GIA)</p>
+                        <h5>@rating.THANH_VIEN.TEN_THANH_VIEN</h5>
+                    </div>
+
+                    }
+                </div>
+            }
+            else
+            {
+                <p>Chưa có đánh giá nào.</p>
+            }
+        </div>
+    </div>
+</section>
+
 

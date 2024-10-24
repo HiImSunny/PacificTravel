@@ -1,10 +1,31 @@
-﻿
+﻿@using Web_Tour.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<BAI_VIET>
+
 @{
     ViewBag.Title = "Tin tức PacificTravel";
     Layout = "~/Views/Shared/LayoutUser.cshtml";
 
     ViewBag.active = "News";
     ViewBag.topBannerUrl = "/Images/news-banner.jpg";
+}
+
+@helper Truncate(string input, int length)
+{
+    if (input == null)
+    {
+        <text></text>
+    }
+
+    else if (input.Length <= length)
+    {
+        @Html.Raw(input)
+    }
+    else
+    {
+        var thisString = input.Substring(0, length);
+        @Html.Raw(thisString)<text>...</text>
+    }
 }
 
 @section Head {
@@ -30,80 +51,39 @@
 
         <div class="news-container">
 
-            <div class="news-item">
+            @foreach (var item in Model)
+            {
+                <div class="news-item">
 
-                <div class="news-img">
-                    <a href="#news-detail">
-                        <img src="~/Images/news/news-01.jpg">
-                    </a>
-                </div>
-
-                <div class="news-info">
-
-                    <div class="news-content">
-                        <a href="#news-detail"><h3 class="news-title">Tưng bừng ưu đãi & quà tặng Hội chợ du lịch quốc tế ITE-HCMC 2024</h3></a>
-                        <div class="date">
-                            <i class="fa-regular fa-calendar"></i>
-                            23/08/2024
-                        </div>
-                        <p>Với chủ đề “Du lịch bền vững - Kiến tạo tương lai”, Hội chợ du lịch quốc tế TP. Hồ Chí Minh (ITE-HCMC 2024) lần thứ 18 sẽ diễn ra từ ngày 5 - 7/9 tại Trung tâm Hội chợ & Triển lãm Sài Gòn (SECC), Phú Mỹ Hưng, Quận 7. Đến với hội chợ, Công ty Dịch vụ Lữ hành PacificTravel giới thiệu các chương trình tour mới, sản phẩm du lịch xanh theo tiêu chí Travelife, chung tay cùng Việt Nam hướng đến cam kết đưa lượng khí khải nhà kính về (0) Net Zero vào năm 2050.</p>
+                    <div class="news-img">
+                        <a href="/User/Article?id=@item.ID_BAI_VIET">
+                            <img src="~/Images/articles/@item.ANH_BIA_BAI_VIET">
+                        </a>
                     </div>
 
-                    <a class="news-button" href="#news-detail"><span>XEM THÊM</span></a>
+                    <div class="news-info">
 
-                </div>
-
-            </div>
-
-            <div class="news-item">
-
-                <div class="news-img">
-                    <a href="#news-detail">
-                        <img src="~/Images/news/news-02.jpg">
-                    </a>
-                </div>
-
-                <div class="news-info">
-
-                    <div class="news-content">
-                        <a href="#news-detail"><h3 class="news-title">“ĐẠI TIỆC TRI ÂN: Săn deal xịn - Khui quà chất!” duy nhất ngày 1/8/2024 trên toàn quốc</h3></a>
-                        <div class="date">
-                            <i class="fa-regular fa-calendar"></i>
-                            31/07/2024
+                        <div class="news-content">
+                            <a href="/User/Article?id=@item.ID_BAI_VIET"><h3 class="news-title">@item.TIEU_DE</h3></a>
+                            <div class="date">
+                                <i class="fa-regular fa-calendar"></i>
+                                @item.THOI_GIAN_TAO
+                            </div>
+                            <p>@Truncate(@Html.Action("ConvertHtmlToPlainText", "User", new { html = item.NOI_DUNG }).ToString(), 200)</p>
                         </div>
-                        <p>Chào mừng 49 năm thành lập thương hiệu PacificTravel (01.8.1975 - 01.8.2024), Công ty Dịch vụ Lữ hành PacificTravel tổ chức sự kiện “ĐẠI TIỆC TRI ÂN: Săn deal xịn - Khui quà chất” tại văn phòng 102 Nguyễn Huệ, Quận 1, Tp. Hồ Chí Minh và 18 Chi nhánh trên toàn quốc duy nhất trong ngày 01.8.2024 (từ 08h00 đến 18h00). Sự kiện đặc biệt nhằm Tri ân các thành viên đang làm việc tại Lữ hành PacificTravel, Khách hàng, Đối tác và Cộng đồng - xã hội.</p>
+
+                        <a class="news-button" href="/User/Article?id=@item.ID_BAI_VIET"><span>XEM THÊM</span></a>
+
                     </div>
 
-                    <a class="news-button" href="#news-detail"><span>XEM THÊM</span></a>
-
                 </div>
+            }
 
-            </div>
 
-            <div class="news-item">
-
-                <div class="news-img">
-                    <a href="#news-detail">
-                        <img src="~/Images/news/news-03.jpg">
-                    </a>
-                </div>
-
-                <div class="news-info">
-
-                    <div class="news-content">
-                        <a href="#news-detail"><h3 class="news-title">Chúng tôi chọn “Sống Xanh - Du Lịch Xanh”</h3></a>
-                        <div class="date">
-                            <i class="fa-regular fa-calendar"></i>
-                            26/06/2024
-                        </div>
-                        <p>Từ thập niên 70, khi Công ty Dịch vụ Lữ hành PacificTravel bắt đầu khai thác, phục vụ những đoàn khách quốc tế đầu tiên đến Việt Nam, thông điệp “không mang gì về ngoài những bức ảnh, không để lại gì ngoài những dấu chân” đã bén rễ trong mỗi chương trình tour của Công ty phục vụ du khách Đức, Pháp, Mỹ. Thông điệp này cũng chính là nền tảng cốt lõi trong triết lý kinh doanh của Lữ hành PacificTravel “Cam kết nỗ lực mang lại những giá trị dịch vụ tốt nhất cho khách hàng, đối tác, bảo đảm sự phát triển bền vững, hài hòa lợi ích doanh nghiệp và cộng đồng xã hội”.</p>
-                    </div>
-
-                    <a class="news-button" href="#news-detail"><span>XEM THÊM</span></a>
-
-                </div>
-
-            </div>
+        </div>
+        <div class="MenuTrang" style=" text-align: center;">
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("/Tours", new { sort = Request["sort"], page = page }))
 
         </div>
 

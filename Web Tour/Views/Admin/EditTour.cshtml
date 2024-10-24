@@ -1,0 +1,148 @@
+﻿@model Web_Tour.Models.TOUR
+
+@{
+    ViewBag.Title = "NewTour";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+
+    ViewBag.group = "Tours";
+}
+
+@section Head {
+    <link href="~/Content/admin/newtour.css" rel="stylesheet" />
+}
+
+@section NavBar {
+    <div class="navbar">
+        <h4>Chỉnh Sửa Tour - @Model.ID_TOUR</h4>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="new-tour-container">
+
+        <div>
+            <form action="/Admin/EditTour" method="post" enctype="multipart/form-data">
+
+                <div class="form-section">
+
+                    <div class="row tour-info col-lg-8 mx-auto">
+                        <h5 style="margin: 0">1. Thông tin cơ bản</h5>
+
+                        <div class="row">
+
+                            @Html.HiddenFor(model => model.STT)
+                            @Html.HiddenFor(model => model.ID_TOUR)
+
+                            <div class="form-item col-md-6">
+                                <label for="ten-tour" class="input-label">Tên tour</label>
+                                <input type="text" required class="input" id="ten-tour" placeholder=" " name="ten-tour" value="@Model.TEN_TOUR">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="ID_TRANG_THAI" class="input-label">Trạng Thái</label>
+                                @Html.DropDownList("ID_TRANG_THAI")
+                            </div>
+
+                            <div class="form-item col-md-12" id="text-area">
+                                <label for="mo-ta" class="input-label">Mô tả</label>
+                                <textarea name="mo-ta" id="mo-ta">@Model.MO_TA</textarea>
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="ngay-di" class="input-label">Ngày đi</label>
+                                <input type="date" required class="input" id="ngay-di" placeholder=" " name="ngay-di" value="@Model.NGAY_DI.ToString("yyyy-MM-dd")">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="ngay-ve" class="input-label">Ngày về</label>
+                                <input type="date" required class="input" id="ngay-ve" placeholder=" " name="ngay-ve" value="@Model.NGAY_VE.ToString("yyyy-MM-dd")">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="dia-diem-khoi-hanh" class="input-label">Địa điểm khởi hành</label>
+                                <input type="text" required class="input" id="dia-diem-khoi-hanh" placeholder=" " name="dia-diem-khoi-hanh" value="@Model.DIA_DIEM_KHOI_HANH">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="dia-diem-tham-quan" class="input-label">Địa điểm tham quan</label>
+                                <input type="text" required class="input" id="dia-diem-tham-quan" placeholder=" " name="dia-diem-tham-quan" value="@Model.DIA_DIEM_THAM_QUAN">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="hinh-thuc-di-chuyen" class="input-label">Hình thức di chuyển</label>
+                                <input type="text" class="input" id="hinh-thuc-di-chuyen" placeholder=" " name="hinh-thuc-di-chuyen" value="@Model.HINH_THUC_DI_CHUYEN">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="ID_HDV" class="input-label">Hướng Dẫn Viên</label>
+                                @Html.DropDownList("ID_HDV")
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-section tour-date">
+                    <div class="row tour-info col-lg-8 mx-auto">
+                        <h5 style="margin: 0">2. Thông tin giá tour</h5>
+
+                        <div class="row">
+
+                            <div class="form-item col-md-12">
+                                <label for="giam-gia" class="input-label">Giảm giá</label>
+                                <input type="number" required class="input" id="giam-gia" placeholder=" " name="giam-gia" value="@String.Format("{0:0}", Model.GIAM_GIA)">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="gia-nguoi-lon" class="input-label">Giá người lớn</label>
+                                <input type="number" required class="input" id="gia-nguoi-lon" placeholder=" " name="gia-nguoi-lon" value="@String.Format("{0:0}", Model.GIA_NGUOI_LON)">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="gia-tre-em" class="input-label">Giá trẻ em</label>
+                                <input type="number" re class="input" id="gia-tre-em" placeholder=" " name="gia-tre-em" value="@String.Format("{0:0}", Model.GIA_TRE_EM)">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section tour-img">
+                    <div class="row tour-info col-lg-8 mx-auto">
+                        <h5 style="margin: 0">3. Ảnh bìa tour</h5>
+
+                        <div class="row">
+
+                            <div class="form-item col-md-12">
+                                <label for="anhbiatour" class="input-label">Đặt ảnh bìa tour</label>
+                                <input type="file" name="anhbiatour" id="anhbiatour" value="" class="input" />
+                                (Ảnh Hiện Tại)
+                                <img id="previewImage" src="@Url.Content("~/Images/tour/" + Model.ANH_BIA_TOUR)" alt="Ảnh bìa tour hiện tại" style="width: 200px; height: 200px">
+                                <input type="hidden" name="anhbiahientai" value="@Model.ANH_BIA_TOUR" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-wrapper">
+                    <a class="back-to-tours" href="/Admin/Tours">Trở Về</a>
+                    <button class="create-tour-button" type="submit">Lưu Thông Tin</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.getElementById('gia-nguoi-lon').addEventListener('input', function () {
+        var giaNguoiLon = parseFloat(this.value);
+        if (!isNaN(giaNguoiLon)) {
+            document.getElementById('gia-tre-em').value = (giaNguoiLon / 2).toFixed(0); // Làm tròn số
+        } else {
+            document.getElementById('gia-tre-em').value = ''; // Xóa giá trị nếu không hợp lệ
+        }
+    });
+</script>

@@ -1,0 +1,66 @@
+﻿@model Web_Tour.Models.HUONGDANVIEN
+
+@{
+    ViewBag.Title = "New TourGuide";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+
+    ViewBag.group = "TourGuides";
+}
+
+@section Head {
+    <link href="~/Content/admin/newtour.css" rel="stylesheet" />
+}
+
+@section NavBar {
+    <div class="navbar">
+        <h4>Tạo Hướng Dẫn Viên</h4>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="new-tour-container">
+
+        <div>
+            <form action="/Admin/NewTourGuide" method="post">
+
+                <div class="form-section">
+
+                    <div class="row tour-info col-lg-8 mx-auto">
+
+                        <div class="row">
+
+                            <div class="form-item col-md-6">
+                                <label for="ten-hdv" class="input-label">Tên Hướng Dẫn Viên</label>
+                                <input type="text" required class="input" id="ten-hdv" placeholder=" " name="ten-hdv" value="">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="sdt-hdv" class="input-label">SĐT Hướng Dẫn Viên</label>
+                                <input type="text" required class="input" id="sdt-hdv" placeholder=" " name="sdt-hdv" value="">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="email-hdv" class="input-label">Email Hướng Dẫn Viên</label>
+                                <input type="text" required class="input" id="email-hdv" placeholder=" " name="email-hdv" value="">
+                            </div>
+
+                            <div class="form-item col-md-6">
+                                <label for="address-hdv" class="input-label">Địa Chỉ Hướng Dẫn Viên</label>
+                                <input type="text" required class="input" id="address-hdv" placeholder=" " name="address-hdv" value="">
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="button-wrapper">
+                    <a class="back-to-tours" href="/Admin/NewTourGuide">Trở Về</a>
+                    <button class="create-tour-button" type="submit">Tạo Mới</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>

@@ -42,17 +42,29 @@ select, input {
     justify-content: center;
 }
 
-.create-tour-button {
+.create-tour-button, .back-to-tours, .delete-tours {
     background-color: #ff6a00;
     font-weight: bold;
     border: 0;
     width: 200px;
     border-radius: 3px;
     color: white;
+    align-content: center;
+    text-align: center;
+    margin: 0 20px;
 }
 
-.create-tour-button:hover {
-    background-color: white;
-    border: 3px solid #ff6a00;
-    color: #ff6a00;
+.back-to-tours {
+    background-color: #a1a1a1;
 }
+
+    .back-to-tours:hover {
+        color: #a1a1a1;
+        background-color: white;
+    }
+
+    .create-tour-button:hover, .delete-tours:hover {
+        background-color: white;
+        border: 3px solid #ff6a00;
+        color: #ff6a00;
+    }

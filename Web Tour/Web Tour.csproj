@@ -48,11 +48,37 @@
     <Reference Include="HtmlAgilityPack, Version=1.11.67.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.11.67\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="LINQPad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=21353812cd2a2db5, processorArchitecture=MSIL">
+      <HintPath>..\packages\LINQPad.5.46.0\lib\net46\LINQPad.exe</HintPath>
+    </Reference>
+    <Reference Include="lprun, Version=1.0.0.0, Culture=neutral, PublicKeyToken=21353812cd2a2db5, processorArchitecture=x86">
+      <HintPath>..\packages\LINQPad.5.46.0\lib\net46\lprun.exe</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.4.3.8\lib\net461\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler.Shared, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.Shared.4.3.8\lib\net461\MiniProfiler.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -246,6 +272,7 @@
     <Content Include="Content\icomoon.css" />
     <Content Include="Content\ionicons.min.css" />
     <Content Include="Content\jquery.selectBox.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Scripts\jquery.selectBox.js" />
     <Content Include="Content\jquery.timepicker.css" />
     <Content Include="Content\magnific-popup.css" />
@@ -552,21 +579,35 @@
     <Content Include="Views\Shared\LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\Tours.cshtml" />
     <Content Include="Views\Admin\News.cshtml" />
-    <Content Include="Views\Admin\Location.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Admin\TourBoughtList.cshtml" />
     <Content Include="Views\Admin\RateList.cshtml" />
     <Content Include="Views\Admin\NewTour.cshtml" />
-    <Content Include="Views\Admin\TourTypes.cshtml" />
-    <Content Include="Views\Admin\NewTourType.cshtml" />
-    <Content Include="Views\Admin\EditTourType.cshtml" />
-    <Content Include="Views\Admin\DeleteTourType.cshtml" />
-    <Content Include="Views\Admin\DeleteTourStatus.cshtml" />
     <Content Include="Views\Tour\VietQRPayment.cshtml" />
     <Content Include="Views\Tour\CashPayment.cshtml" />
+    <Content Include="Views\Tour\BookedDetails.cshtml" />
+    <Content Include="Views\Tour\BookedDetailsPage.cshtml" />
+    <Content Include="Views\Tour\CancelBookedTour.cshtml" />
+    <Content Include="Views\Admin\EditTour.cshtml" />
+    <Content Include="Views\Admin\TourDetails.cshtml" />
+    <Content Include="Views\Admin\DeleteTour.cshtml" />
+    <Content Include="Views\User\SearchTour.cshtml" />
+    <Content Include="Views\Admin\TourBoughtDetails.cshtml" />
+    <Content Include="Views\Admin\CancelBookedTour.cshtml" />
+    <Content Include="Views\Admin\Payment.cshtml" />
+    <Content Include="Views\Admin\RateDetails.cshtml" />
+    <Content Include="Views\Admin\DeleteRate.cshtml" />
+    <Content Include="Views\Admin\TourGuides.cshtml" />
+    <Content Include="Views\Admin\TourGuideEdit.cshtml" />
+    <Content Include="Views\Admin\DeleteTourGuide.cshtml" />
+    <Content Include="Views\Admin\NewTourGuide.cshtml" />
+    <Content Include="Views\Admin\NewArticle.cshtml" />
+    <Content Include="Views\Admin\ArticleDetails.cshtml" />
+    <Content Include="Views\User\Article.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\articles\" />
     <Folder Include="Images\tour\campuchia\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,135 @@
-﻿@{
+﻿@using Web_Tour.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<DAT_TOUR>
+
+@{
     ViewBag.Title = "TourBoughtList";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 
     ViewBag.active = "TourBoughtList";
 }
 
-<h2>TourBoughtList</h2>
+@section Head {
 
+    <link rel="stylesheet" href="~/Content/PagedList.css">
+}
+
+@section NavBar {
+    <div class="navbar">
+        <h4 style="margin: 0">Danh Sách Đặt Tour</h4>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="tour-booked-container">
+
+        <table>
+            <tr>
+                <th style="width:200px"> Mã Đặt Chỗ </th>
+                <th style="width:200px"> Ngày Đặt </th>
+                <th style="width:150px"> Tổng Tiền Tour </th>
+                <th style="width:150px"> Tổng Tiền Nhận </th>
+                <th style="width:200px"> Trạng Thái Thanh Toán </th>
+                <th style="width:150px"> Trạng Thái Tour </th>
+                <th style="width:350px"> </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr class="@(item.HUY_DAT_TOUR ? "cancel-tour" : "")">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_DAT_TOUR)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.THOI_GIAN_DAT)
+                    </td>
+                    <td>
+                        @String.Format("{0:0,0}", item.TONG_SO_TIEN) VNĐ
+                    </td>
+                    <td>
+                        @((item.THANH_TOAN.SO_TIEN_DA_NHAN == 0) ? "0 VNĐ" : String.Format("{0:0,0} VNĐ", item.THANH_TOAN.SO_TIEN_DA_NHAN))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.THANH_TOAN.TRANG_THAI_THANH_TOAN.TEN_TRANG_THAI)
+                    </td>
+                    <td>
+                        @(item.TOUR.TRANG_THAI_TOUR.ID_TRANG_THAI == 1 ? "Chờ Bắt Đầu" : Html.DisplayFor(modelItem => item.TOUR.TRANG_THAI_TOUR.TEN_TRANG_THAI).ToHtmlString())
+                    </td>
+
+                    <td class="action">
+                        @if (item.HUY_DAT_TOUR)
+                        {
+                            <span>Đã Hủy Đặt</span>
+                        }
+                        else
+                        {
+
+                            <a href="/Admin/TourBoughtDetails?id=@item.ID_DAT_TOUR" id="detail">Chi Tiết</a>
+                            <a href="/Admin/Payment?id=@item.ID_DAT_TOUR" id="payment">Thanh Toán</a>
+                            <a href="/Admin/CancelBookedTour?id=@item.ID_DAT_TOUR" id="cancel">Hủy Đặt Tour</a>
+
+                        }
+                    </td>
+
+                </tr>
+            }
+        </table>
+
+
+        <div class="MenuTrang" style=" text-align: center;">
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("/TourBoughtList", new { page = page }))
+
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .tour-booked-container {
+        border-radius: 0.375rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        background-color: white;
+    }
+
+    table th {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    table td {
+        padding: 0.75rem;
+        vertical-align: top;
+    }
+
+    .action {
+        align-content: center;
+    }
+
+        .action #detail {
+            padding: 8px;
+            background-color: #007aff;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .action #payment {
+            padding: 8px;
+            background-color: #ff6a00;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .action #cancel {
+            padding: 8px;
+            background-color: #ff0300;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
+</style>

@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 
     ViewBag.group = "Tours";
-    ViewBag.active = "Tours";
 }
 
 @section Head {
@@ -94,7 +93,7 @@
 
                             <div class="form-item col-md-12">
                                 <label for="giam-gia" class="input-label">Giảm giá</label>
-                                <input type="number" required class="input" id="giam-gia" placeholder=" " name="giam-gia">
+                                <input type="number" class="input" id="giam-gia" placeholder=" " name="giam-gia">
                             </div>
 
                             <div class="form-item col-md-6">
@@ -128,6 +127,7 @@
                 </div>
 
                 <div class="button-wrapper">
+                    <a class="back-to-tours" href="/Admin/Tours">Trở Về</a>
                     <button class="create-tour-button" type="submit">Tạo Tour</button>
                 </div>
 
@@ -166,6 +166,7 @@
                     $("#ten-tour").val("");
                     $("#dia-diem-khoi-hanh").val("");
                     $("#dia-diem-tham-quan").val("");
+                    $("#mo-ta").html("Nhập mô tả tour");
 
                     // Enable input fields if no data found
                     $("#ten-tour, #dia-diem-khoi-hanh, #dia-diem-tham-quan").prop("readonly", false);

@@ -1,30 +1,12 @@
 ﻿@using Web_Tour.Models;
 @using PagedList.Mvc;
-@model PagedList.PagedList<DANH_GIA>
+@model PagedList.PagedList<HUONGDANVIEN>
 
 @{
-    ViewBag.Title = "RateList";
+    ViewBag.Title = "TourGuides";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 
-    ViewBag.active = "RateList";
-}
-
-@helper Truncate(string input, int length)
-{
-    if (input == null)
-    {
-        <text></text>
-    }
-
-    else if (input.Length <= length)
-    {
-        @Html.Raw(input)
-    }
-    else
-    {
-        var thisString = input.Substring(0, length);
-        @Html.Raw(thisString)<text>...</text>
-    }
+    ViewBag.active = "TourGuides";
 }
 
 @section Head {
@@ -34,45 +16,47 @@
 
 @section NavBar {
     <div class="navbar">
-        <h4 style="margin: 0">Danh Sách Đặt Tour</h4>
+        <a class="new-hdv" href="/Admin/NewTourGuide">Tạo HDV</a>
+        <h4 style="margin: 0">Danh Sách Hướng Dẫn Viên</h4>
     </div>
 }
 
 <div class="container-xxl flex-grow-1 container-p-y">
 
-    <div class="tour-booked-container">
+    <div class="tour-guides-container">
 
         <table>
             <tr>
-                <th style="width:100px"> Mã Đánh Giá </th>
-                <th style="width:100px"> Số Sao </th>
-                <th style="width:500px"> Nội Dung Đánh Giá </th>
-                <th style="width:200px"> Mã Tour </th>
-                <th style="width:200px"> Mã Thành Viên </th>
+                <th style="width:100px"> Mã HDV </th>
+                <th style="width:250px"> Họ Tên HDV </th>
+                <th style="width:150px"> SĐT HDV </th>
+                <th style="width:250px"> Email HDV </th>
+                <th style="width:200px"> Địa Chỉ HDV </th>
                 <th style="width:350px"> </th>
             </tr>
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ID_DANH_GIA)
+                        @Html.DisplayFor(modelItem => item.ID_HDV)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.SO_LUONG_SAO)
+                        @Html.DisplayFor(modelItem => item.HO_TEN_HDV)
                     </td>
                     <td>
-                        @Truncate(@Html.Action("ConvertHtmlToPlainText", "User", new { html = item.NOI_DUNG_DANH_GIA }).ToString(), 100)
+                        @Html.DisplayFor(modelItem => item.SDT_HDV)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ID_TOUR)
+                        @Html.DisplayFor(modelItem => item.EMAIL_HDV)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ID_THANH_VIEN)
+                        @Html.DisplayFor(modelItem => item.DIA_CHI_HDV)
                     </td>
 
                     <td class="action">
-                        <a href="/Admin/RateDetails?id=@item.ID_DANH_GIA" id="detail">Chi Tiết</a>
-                        <a href="/Admin/DeleteRate?id=@item.ID_DANH_GIA" id="delete">Xóa Đánh Giá</a>
+
+                        <a href="/Admin/TourGuideEdit?id=@item.ID_HDV" id="edit">Chỉnh Sửa</a>
+                        <a href="/Admin/DeleteTourGuide?id=@item.ID_HDV" id="delete">Xóa HDV</a>
                     </td>
 
                 </tr>
@@ -90,7 +74,7 @@
 </div>
 
 <style>
-    .tour-booked-container {
+    .tour-guides-container {
         border-radius: 0.375rem;
         padding: 1.5rem;
         margin-bottom: 1.5rem;
@@ -121,6 +105,14 @@
             font-weight: 500;
         }
 
+        .action #edit {
+            padding: 8px;
+            background-color: #ff6a00;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
         .action #delete {
             padding: 8px;
             background-color: #ff0300;
@@ -128,4 +120,20 @@
             font-size: 16px;
             font-weight: 500;
         }
+
+    .navbar .new-hdv {
+        font-weight: bold;
+        margin: 0;
+        float: left;
+        background-color: #ff6c00;
+        color: white;
+        width: 100px;
+        align-content: center;
+        text-align: center;
+        margin-right: 45px;
+        padding: 0 10px;
+        height: 40px;
+        border-radius: 3px;
+    }
 </style>
+

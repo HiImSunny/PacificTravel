@@ -1,0 +1,113 @@
+﻿@model Web_Tour.Models.HUONGDANVIEN
+
+@{
+    ViewBag.Title = "Delete TourGuide";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/tour/booking.css">
+}
+
+@section NavBar {
+    <div class="navbar">
+        <h4 style="margin: 0">Xóa Hướng Dẫn Viên</h4>
+    </div>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="rate-container">
+
+        <ul class="list-unstyled">
+            <li>
+                Mã Hướng Dẫn Viên:
+                <span>@Model.ID_HDV</span>
+            </li>
+            <li>
+                Tên Hướng Dẫn Viên:
+                <span>@Model.HO_TEN_HDV</span>
+            </li>
+            <li>
+                SĐT Hướng Dẫn Viên:
+                <span>@Model.SDT_HDV</span>
+            </li>
+            <li>
+                Email Hướng Dẫn Viên:
+                <span>@Model.EMAIL_HDV</span>
+            </li>
+            <li>
+                Địa Chỉ Hướng Dẫn Viên:
+                <span>@Model.DIA_CHI_HDV</span>
+            </li>
+
+        </ul>
+
+        <div style="margin-top: 50px; text-align: -webkit-center;">
+            <a class="delete-hdv" href="@Url.Content("/Admin/ConfirmDeleteTourGuide?id=" + Model.ID_HDV)">Xác Nhận Xóa Hướng Dẫn Viên</a>
+
+
+
+        </div>
+
+
+    </div>
+
+    <div style="text-align: -webkit-center;">
+        <a href="/Admin/TourGuides" class="text-center back-to-tours">
+            Trở Về
+        </a>
+    </div>
+
+</div>
+
+<style>
+
+    .rate-container {
+        border-radius: 0.375rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        background-color: white;
+    }
+
+    .back-to-tours {
+        display: block;
+        width: 200px;
+        padding: 20px;
+        background-color: #a1a1a1;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+    }
+
+        .back-to-tours:hover {
+            color: #a1a1a1;
+            background-color: white;
+        }
+
+    li span {
+        font-weight: 600;
+    }
+
+    .delete-hdv {
+        display: block;
+        background-color: #ff6a00;
+        font-weight: bold;
+        border: 0;
+        width: 300px;
+        border-radius: 3px;
+        color: white;
+        align-content: center;
+        text-align: center;
+        margin: 20px 0;
+        border: 3px solid #ff6a00;
+        padding: 20px;
+    }
+
+        .delete-hdv:hover {
+            background-color: white;
+            color: #ff6a00;
+        }
+</style>
+
+
